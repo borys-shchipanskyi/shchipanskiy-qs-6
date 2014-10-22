@@ -5,7 +5,7 @@
 
     <test name="SmokeTest">
         <classes>
-            <class name="simple.FirstTest" />
+            <class name="simple.SecondTest" />
         </classes>
     </test>
 </suite>
