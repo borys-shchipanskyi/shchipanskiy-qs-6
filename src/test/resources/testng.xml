@@ -4,8 +4,9 @@
     <parameter name="expectedCount" value="2"/>
 
     <test name="SmokeTest">
+        <parameter name="email" value="test.txt"/>
         <classes>
-            <class name="simple.SecondTest" />
+            <class name="simple.EmailTest" />
         </classes>
     </test>
 </suite>
