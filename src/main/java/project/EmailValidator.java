@@ -1,12 +1,15 @@
 package project;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by boris on 23.10.14.
  */
 public class EmailValidator {
-    public static boolean emailValidator(String email){
-        String regExp = "([A-z0-9-_]+[.][A-z-_]+\\@[A-z]+[\\.][A-z]+|[\\.][A-z]+)";
 
-        return true;
+    public static boolean  isValid(final String email) {
+         String regExp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"; ;
+        return email.matches(regExp);
     }
 }

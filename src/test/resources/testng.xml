@@ -4,7 +4,7 @@
     <parameter name="expectedCount" value="2"/>
 
     <test name="SmokeTest">
-        <parameter name="email" value="test.txt"/>
+        <parameter name="email" value="param@gmail.com"/>
         <classes>
             <class name="simple.EmailTest" />
         </classes>
