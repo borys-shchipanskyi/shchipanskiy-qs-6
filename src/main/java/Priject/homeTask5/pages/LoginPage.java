@@ -1,6 +1,7 @@
 package Priject.homeTask5.pages;
 
 import Priject.homeTask5.actors.Users;
+import org.openqa.selenium.WebDriver;
 
 import static Priject.homeTask5.pages.RegisterPage.*;
 
@@ -10,10 +11,12 @@ import static Priject.homeTask5.pages.RegisterPage.*;
 public class LoginPage {
     private String logEmail;
     private String logPassword;
+    private WebDriver driver;
 
-    public LoginPage(Users user){
+    public LoginPage(Users user, WebDriver driver){
         this.logEmail = user.getEmail();
         this.logPassword = user.getPassword();
+        this.driver = driver;
     }
 
     private boolean sendLogginCommand(){

@@ -3,7 +3,7 @@
     <parameter name="filePath" value="src/test/java/Tests/homeTask4/test.txt"/>
     <test name="SmokeTest">
         <classes>
-            <class name="Tests.homeTask4.CheckSubStringTest"/>
+            <class name="Tests.homeTask5.RegisterTest"/>
         </classes>
     </test>
 </suite>
