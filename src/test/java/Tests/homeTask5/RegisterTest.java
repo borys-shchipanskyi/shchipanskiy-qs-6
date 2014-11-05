@@ -2,8 +2,13 @@ package Tests.homeTask5;
 
 import Priject.homeTask5.actors.Users;
 import Priject.homeTask5.pages.MainPage;
+import Priject.homeTask5.pages.RegisterPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -16,8 +21,6 @@ import java.util.HashMap;
  * Created by boris on 03.11.14.
  */
 public class RegisterTest {
-    public final String ERROR_MSG1  = "Cannot register with this credentials,";
-    public final String ERROR_MSG2  = "Login is possible with this credentials, so registration is failed(,";
     public static WebDriver driver;
 
 
@@ -28,7 +31,7 @@ public class RegisterTest {
     @DataProvider
     public Object[][] testData(){
         return new Object[][] {
-        new Object[] {"http://hotline.ua/", userInfo("param@gmail.com",  "test", "test"), true},
+        new Object[] {"http://hotline.ua/", userInfo("param@gmail.com",  "test", "test")},
         };
     }
     public HashMap<String, String> userInfo(String email, String nicName, String password){
@@ -40,11 +43,19 @@ public class RegisterTest {
     }
 
     @Test(dataProvider = "testData")
-    public void testRegistration(String strUrl, HashMap hm, boolean isGenerateEmail){
+    public void testRegistration(String strUrl, HashMap hm){
+
+        /*WebDriverWait wait = new WebDriverWait(driver, 1000);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("close"))));
         driver.get(strUrl);
-        Users user = new Users(hm, isGenerateEmail);
-        MainPage mp = new MainPage(user, driver);
+        driver.findElement(By.className("blue-button")).click();
+        driver.findElement(By.className("reg")).click();
+        Assert.assertTrue(true);
+        */
+        Users user = new Users(hm);
+        MainPage mp = new MainPage(strUrl, driver);
         mp.cleanHome();
+<<<<<<< HEAD
         boolean loginStat = mp.login(user);
 
         Assert.assertTrue((!loginStat) ? mp.register(user) : false, (!loginStat) ? ERROR_MSG1 : ERROR_MSG2);
@@ -58,14 +69,25 @@ public class RegisterTest {
         boolean loginStat = mp.login(user);
 
         Assert.assertFalse((!loginStat) ? mp.register(user) : false, (!loginStat) ? ERROR_MSG1 : ERROR_MSG2);
+=======
+        boolean loginStatus =  mp.login(user);
+>>>>>>> 2140876a1b8a17695b9254dda6e1cbf7b12555e1
 
+        if (!loginStatus){
+            Assert.assertEquals(RegisterPage.register(), true);
+        }
+        else Assert.assertFalse(loginStatus);
     }
+<<<<<<< HEAD
 
 
+=======
+    /*
+>>>>>>> 2140876a1b8a17695b9254dda6e1cbf7b12555e1
     @AfterSuite
     public void cleanEnv(){
         if (driver != null){
             driver.quit();
         }
-    }
+    }*/
 }
