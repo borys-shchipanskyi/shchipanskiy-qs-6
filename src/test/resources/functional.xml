@@ -4,6 +4,7 @@
     <test name="SmokeTest">
         <classes>
             <class name="Tests.homeTask5.RegisterTest"/>
+            <class name="Tests.homeTask5.RegisterTestNegative"/>
         </classes>
     </test>
 </suite>
