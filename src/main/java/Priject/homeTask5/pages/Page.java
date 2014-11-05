@@ -23,6 +23,8 @@ public class Page {
     public String SELECTOR_CITY_CLASS = "a.blue-button.success";
     public String SELECTOR_T_IMG_CLASS = "lightbox-form";
     public String SELECTOR_REG_SUCCSES_CLASS = "registr-successful";
+    public String SELECTOR_SEARCHBOX_ID = "searchbox";
+    public String SELECTOR_DO_SEARCH_ID = "doSearch";
 
 
     public Page(Users user, WebDriver driver){

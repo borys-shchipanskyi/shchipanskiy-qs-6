@@ -45,16 +45,30 @@ public class MainPage extends Page {
     }
     public boolean register(Users user){
         RegisterPage rp = new RegisterPage(user, driver);
-        boolean isRegister;
+        boolean isRegister = true;
         rp.opennPage();
         rp.register();
+
         try {
             isRegister = rp.checkIsRegister();
-            rp.closePage();
+            //rp.closePage();
         } catch (Exception e){
             return false;
         }
         return isRegister;
+    }
+
+    public boolean findProduct(Users user,String product){
+        driver.findElement(By.id(SELECTOR_SEARCHBOX_ID)).sendKeys(product);
+        driver.findElement(By.id(SELECTOR_DO_SEARCH_ID)).click();
+        GoodsPage gp = new GoodsPage(user, driver);
+        boolean isSearch;
+        try{
+            isSearch = gp.isPresent(product);
+        } catch (Exception e){
+            return false;
+        }
+        return isSearch;
     }
 
 }
