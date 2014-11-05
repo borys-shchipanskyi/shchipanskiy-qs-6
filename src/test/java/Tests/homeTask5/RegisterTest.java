@@ -28,7 +28,7 @@ public class RegisterTest {
     @DataProvider
     public Object[][] testData(){
         return new Object[][] {
-        new Object[] {"http://hotline.ua/", userInfo("param@gmail.com",  "test", "test"), true},
+                new Object[] {"http://hotline.ua/", userInfo("param@gmail.com",  "test", "test"), true},
         };
     }
     public HashMap<String, String> userInfo(String email, String nicName, String password){
@@ -50,7 +50,6 @@ public class RegisterTest {
         Assert.assertTrue((!loginStat) ? mp.register(user) : false, (!loginStat) ? ERROR_MSG1 : ERROR_MSG2);
 
     }
-
     @Test(dataProvider = "testData")
     public void testRegistrationNegative(String strUrl, HashMap hm, boolean isGenerateEmail){
         driver.get(strUrl);
