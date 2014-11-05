@@ -51,6 +51,18 @@ public class RegisterTest {
 
     }
 
+    @Test(dataProvider = "testData")
+    public void testRegistrationNegative(String strUrl, HashMap hm, boolean isGenerateEmail){
+        driver.get(strUrl);
+        Users user = new Users(hm, !isGenerateEmail);
+        MainPage mp = new MainPage(user, driver);
+        mp.cleanHome();
+        boolean loginStat = mp.login(user);
+
+        Assert.assertFalse((!loginStat) ? mp.register(user) : false, (!loginStat) ? ERROR_MSG1 : ERROR_MSG2);
+
+    }
+
     @AfterSuite
     public void cleanEnv(){
         if (driver != null){
