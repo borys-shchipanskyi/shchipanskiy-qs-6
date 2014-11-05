@@ -15,16 +15,8 @@ import java.util.HashMap;
 /**
  * Created by boris on 03.11.14.
  */
-public class RegisterTest {
-    public final String ERROR_MSG1  = "Cannot register with this credentials,";
-    public final String ERROR_MSG2  = "Login is possible with this credentials, so registration is failed(,";
-    public static WebDriver driver;
+public class RegisterTest extends FunctionTest{
 
-
-    @BeforeSuite
-    public void setInv(){
-        driver = new FirefoxDriver();
-    }
     @DataProvider
     public Object[][] testData(){
         return new Object[][] {
@@ -50,10 +42,4 @@ public class RegisterTest {
         Assert.assertTrue((!loginStat) ? mp.register(user) : false, (!loginStat) ? ERROR_MSG1 : ERROR_MSG2);
     }
 
-    @AfterSuite
-    public void cleanEnv(){
-        if (driver != null){
-            driver.quit();
-        }
-    }
 }

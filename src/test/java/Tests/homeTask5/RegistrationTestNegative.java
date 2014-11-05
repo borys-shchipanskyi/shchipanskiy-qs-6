@@ -15,21 +15,8 @@ import java.util.HashMap;
 /**
  * Created by boris on 05.11.14.
  */
-public class RegistrationTestNegative {
-    public final String ERROR_MSG1  = "Cannot register with this credentials";
-    public final String ERROR_MSG2  = "Login is possible with this credentials, so registration is failed(";
-    public static WebDriver driver;
+public class RegistrationTestNegative extends FunctionTest{
 
-
-    @BeforeSuite
-    public void setInv(){
-        driver = new FirefoxDriver();
-    }
-    @DataProvider
-    public Object[][] testData(){
-        return new Object[][] {
-                new Object[] {"http://hotline.ua/", userInfo("param@gmail.com",  "test", "test"), true}};
-    }
     public HashMap<String, String> userInfo(String email, String nicName, String password){
         HashMap hm = new HashMap();
         hm.put("email", email);
@@ -50,11 +37,4 @@ public class RegistrationTestNegative {
         Assert.assertFalse((!loginStat) ? mp.register(user) : false, (!loginStat) ? ERROR_MSG1 : ERROR_MSG2);
     }
 
-    @AfterSuite
-    public void cleanEnv(){
-        if (driver != null){
-            driver.quit();
-        }
-
-    }
 }
