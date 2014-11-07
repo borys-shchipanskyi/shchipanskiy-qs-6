@@ -9,35 +9,41 @@ import org.openqa.selenium.WebDriver;
  */
 public class RegisterPage extends Page{
 
+    private static Users user;
+
+    private static final By PAGE = By.className("reg");
+    private static final By REG_EMAIL = By.name("email");
+    private static final By REG_NIC_NAME = By.name("nick");
+    private static final By REG_PASSWORD = By.name("password");
+    private static final By REG_PASSWORD2 = By.name("password2");
+    private static final By REG_BUTTON = By.className("blue-button");
+    private static final By REG_IS_SUCCSES = By.className("registr-successful");
+
     public RegisterPage(Users user, WebDriver driver){
-        super(user, driver);
+        super(PAGE, driver);
+        this.user = user;
     }
-    public void opennPage(){
-        driver.findElement(By.className(SELECTOR_REG_CLASS)).click();
-    }
-    public boolean register(){
+
+    public boolean fillRegistrationForm(){
         try{
-            driver.findElement(By.name("email")).sendKeys(logEmail);
-            driver.findElement(By.name("nick")).sendKeys(nicName);
-            driver.findElement(By.name("password")).sendKeys(logPassword);
-            driver.findElement(By.name("password2")).sendKeys(logPassword);
-            driver.findElement(By.className("blue-button")).click();
+            driver.findElement(REG_EMAIL).sendKeys(user.getEmail());
+            driver.findElement(REG_NIC_NAME).sendKeys(user.getNicName());
+            driver.findElement(REG_PASSWORD).sendKeys(user.getPassword());
+            driver.findElement(REG_PASSWORD2).sendKeys(user.getPassword());
+            driver.findElement(REG_BUTTON).click();
 
         } catch (Exception e){
             return false;
         }
         return true;
     }
-    public boolean checkIsRegister(){
+    public boolean isRegiststrationSuccses(){
         try{
-            driver.findElement(By.className(SELECTOR_REG_SUCCSES_CLASS));
+            driver.findElement(REG_IS_SUCCSES);
         }catch (Exception e){
             return false;
         }
         return true;
     }
 
-    public void closePage(){
-        driver.get(HOME_URL);
-    }
 }

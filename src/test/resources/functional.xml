@@ -5,7 +5,7 @@
         <classes>
             <class name="Tests.homeTask5.RegisterTest"/>
             <!--class name="Tests.homeTask5.RegistrationTestNegative"/-->
-            <class name="Tests.homeTask5.FindProductTest"/>
+            <!--class name="Tests.homeTask5.FindProductTest"/-->
         </classes>
     </test>
 </suite>

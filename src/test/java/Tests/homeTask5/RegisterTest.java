@@ -1,9 +1,14 @@
 package Tests.homeTask5;
 
 import Priject.homeTask5.actors.Users;
+import Priject.homeTask5.pages.LoginPage;
 import Priject.homeTask5.pages.MainPage;
+import Priject.homeTask5.pages.RegisterPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -31,15 +36,48 @@ public class RegisterTest extends FunctionTest{
         return hm;
     }
 
+
+    @Test(dataProvider = "testData")
+    public void test(String strUrl, HashMap hm, boolean isGenerateEmail){
+        driver.get(strUrl);
+        Users user = new Users(hm, isGenerateEmail);
+        LoginPage lp = new LoginPage(user, driver);
+        lp.cleanPage();
+        lp.openPage();
+        lp.fillLoginForm();
+        //WebDriverWait wait = new WebDriverWait(driver, 1000);
+       // wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[contains(text(), 'Войти')]"))));
+       // driver.findElement(By.xpath("//a[contains(text(), 'Войти')]")).click();
+
+    }/*
+
     @Test(dataProvider = "testData")
     public void testRegistration(String strUrl, HashMap hm, boolean isGenerateEmail){
         driver.get(strUrl);
         Users user = new Users(hm, isGenerateEmail);
-        MainPage mp = new MainPage(user, driver);
-        mp.cleanHome();
-        boolean loginStat = mp.login(user);
+        RegisterPage rp = new RegisterPage(user, driver);
+        rp.openPage();
+        rp.cleanPage();
+        rp.fillRegistrationForm();
+        Assert.assertTrue(rp.isRegiststrationSuccses(), ERROR_MSG1);
 
-        Assert.assertTrue((!loginStat) ? mp.register(user) : false, (!loginStat) ? ERROR_MSG1 : ERROR_MSG2);
+    }
+    @Test(dataProvider = "testData")
+    public void testRegistrationNegative(String strUrl, HashMap hm, boolean isGenerateEmail){
+        driver.get(strUrl);
+        Users user = new Users(hm, !isGenerateEmail);
+        RegisterPage rp = new RegisterPage(user, driver);
+        rp.openPage();
+        rp.cleanPage();
+        rp.fillRegistrationForm();
+        Assert.assertFalse(rp.isRegiststrationSuccses(), ERROR_MSG1);
+
+    }*/
+    @AfterSuite
+    public void cleanEnv(){
+        //if (driver != null){
+        //    driver.quit();
+        //}
     }
 
 }

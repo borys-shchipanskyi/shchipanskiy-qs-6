@@ -1,37 +1,58 @@
 package Priject.homeTask5.pages;
 
 import Priject.homeTask5.actors.Users;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by boris on 04.11.14.
  */
 public class Page {
-    public String logEmail;
-    public String logPassword;
-    public String nicName;
-    public WebDriver driver;
+    private static By PAGE;
+    public static WebDriver driver;
 
-    public final String HOME_URL;
-    public String SELECTOR_LOGIN_PAGE = "/user/log_in/";
-    public String SELECTOR_BLUE_BUTTON_CLASS = "blue-button";
-    public String SELECTOR_EMAIL_FILD = "login";
-    public String SELECTOR_PASSWORD_FILD = "password";
-    public String SELECTOR_REG_CLASS = "reg";
-    public String SELECTOR_ENTER_ERROR_CLASS = "error";
-    public String SELECTOR_CLOSE_CLASS = "close";
-    public String SELECTOR_CITY_CLASS = "a.blue-button.success";
-    public String SELECTOR_T_IMG_CLASS = "lightbox-form";
-    public String SELECTOR_REG_SUCCSES_CLASS = "registr-successful";
-    public String SELECTOR_SEARCHBOX_ID = "searchbox";
-    public String SELECTOR_DO_SEARCH_ID = "doSearch";
+    public static final By PAGE_CITY_CLOSE = By.cssSelector("a.blue-button.success");
+    public static final By PAGE_CLOSE = By.className("close");
 
-
-    public Page(Users user, WebDriver driver){
-        this.logEmail = user.getEmail();
-        this.logPassword = user.getPassword();
-        this.nicName = user.getNicName();
+    public Page(WebDriver driver){
         this.driver = driver;
-        this.HOME_URL = driver.getCurrentUrl();
+    }
+    public Page(By page, WebDriver driver){
+        this.driver = driver;
+        PAGE = page;
+
+    }
+
+    public static boolean cleanPage(){
+        try{
+            WebElement element = driver.findElement(PAGE_CLOSE);
+            element.click();
+            element = driver.findElement(PAGE_CITY_CLOSE);
+            element.click();
+
+        }
+        catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+    public static boolean openPage(){
+        try{
+            driver.findElement(PAGE).click();
+        } catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isOpen(){
+        try{
+            driver.findElement(PAGE);
+        } catch (Exception e){
+            return false;
+        }
+        return true;
     }
 }

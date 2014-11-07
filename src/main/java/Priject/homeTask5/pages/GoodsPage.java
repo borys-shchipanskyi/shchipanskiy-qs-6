@@ -7,7 +7,8 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by boris on 05.11.14.
  */
-public class GoodsPage extends Page {
+public class GoodsPage  {
+    /*
     public GoodsPage(Users user, WebDriver driver){
         super(user, driver);
     }
@@ -20,5 +21,5 @@ public class GoodsPage extends Page {
             return false;
         }
             return true;
-    }
+    }*/
 }
