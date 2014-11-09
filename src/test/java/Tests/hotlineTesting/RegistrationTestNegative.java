@@ -1,12 +1,8 @@
-package Tests.homeTask5;
+package Tests.hotlineTesting;
 
-import Priject.homeTask5.actors.Users;
-import Priject.homeTask5.pages.MainPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import Priject.hotlineTwsting.actors.Users;
+import Priject.hotlineTwsting.pages.RegisterPage;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -17,6 +13,12 @@ import java.util.HashMap;
  */
 public class RegistrationTestNegative extends FunctionTest{
 
+    @DataProvider
+    public Object[][] testData(){
+        return new Object[][] {
+                new Object[] {"http://hotline.ua/", userInfo("param@gmail.com",  "test", "test"), true}
+        };
+    }
     public HashMap<String, String> userInfo(String email, String nicName, String password){
         HashMap hm = new HashMap();
         hm.put("email", email);
@@ -28,14 +30,13 @@ public class RegistrationTestNegative extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testRegistrationNegative(String strUrl, HashMap hm, boolean isGenerateEmail){
-        System.out.println(strUrl);
         driver.get(strUrl);
-        /*
         Users user = new Users(hm, !isGenerateEmail);
-        MainPage mp = new MainPage(user, driver);
-        mp.cleanHome();
-        boolean loginStat = mp.login(user);
-        Assert.assertFalse((!loginStat) ? mp.register(user) : false, (!loginStat) ? ERROR_MSG1 : ERROR_MSG2);
-    */}
+        RegisterPage rp = new RegisterPage(user, driver);
+        rp.openPage();
+        rp.fillRegistrationForm();
+        Assert.assertFalse(rp.isRegiststrationSuccses(), ERROR_MSG1);
+
+    }
 
 }

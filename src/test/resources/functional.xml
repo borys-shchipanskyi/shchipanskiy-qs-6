@@ -3,9 +3,11 @@
     <parameter name="filePath" value="src/test/java/Tests/homeTask4/test.txt"/>
     <test name="SmokeTest">
         <classes>
-            <class name="Tests.homeTask5.RegisterTest"/>
-            <!--class name="Tests.homeTask5.RegistrationTestNegative"/-->
-            <!--class name="Tests.homeTask5.FindProductTest"/-->
+            <class name="Tests.hotlineTesting.RegisterTest"/>
+            <class name="Tests.hotlineTesting.RegistrationTestNegative"/>
+            <class name="Tests.hotlineTesting.FindProductTest"/>
+            <class name="Tests.hotlineTesting.FindProductNegstiveTest"/>
+            <class name="Tests.hotlineTesting.ComparePricesTest"/>
         </classes>
     </test>
 </suite>

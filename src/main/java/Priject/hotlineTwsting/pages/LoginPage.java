@@ -1,12 +1,8 @@
-package Priject.homeTask5.pages;
+package Priject.hotlineTwsting.pages;
 
-import Priject.homeTask5.actors.Users;
+import Priject.hotlineTwsting.actors.Users;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import sun.rmi.runtime.Log;
-
-import static Priject.homeTask5.pages.RegisterPage.*;
 
 /**
  * Created by boris on 03.11.14.
