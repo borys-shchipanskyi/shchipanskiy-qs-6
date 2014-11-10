@@ -1,13 +1,13 @@
-package Priject.hotlineTwsting.utils;
+package Priject.hotlineTesting.utils;
 
-//import org.testng.Reporter;
+import org.apache.log4j.Logger;
+import org.testng.Reporter;
 
 
 /**
  * Created by matafix on 09.11.14.
  */
 public class Log4Test {
-    /*
     private Log4Test() {}
 
     private static final Logger LOGGER = Logger.getLogger(Log4Test.class);
@@ -29,5 +29,5 @@ public class Log4Test {
         Reporter.log(String.format(INFO_LOG, message));
         return String.format(INFO_LOG, message);
     }
-*/
+
 }

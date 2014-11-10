@@ -1,8 +1,8 @@
 package Tests.hotlineTesting;
 
-import Priject.hotlineTwsting.pages.SerchPage;
+import Priject.hotlineTesting.pages.SerchPage;
+import Priject.hotlineTesting.utils.Log4Test;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -22,13 +22,15 @@ public class ComparePricesTest extends FunctionTest{
     }
 
     @Test(dataProvider = "testData")
-    public void testFindProductNegative(String strUrl, String product) {
+    public void testComparePrice(String strUrl, String product) {
+        System.out.println(Log4Test.info("Start : testComparePrice"));
         driver.get(strUrl);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
         sp.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertTrue(sp.comparePrice(), "");
+        Assert.assertTrue(sp.comparePrice(), Log4Test.error("There is only one pryce on product"));
+        System.out.println(Log4Test.info("Finish successful : testComparePrice"));
     }
 
 }

@@ -1,7 +1,8 @@
 package Tests.hotlineTesting;
 
-import Priject.hotlineTwsting.actors.Users;
-import Priject.hotlineTwsting.pages.RegisterPage;
+import Priject.hotlineTesting.actors.Users;
+import Priject.hotlineTesting.pages.RegisterPage;
+import Priject.hotlineTesting.utils.Log4Test;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -30,12 +31,14 @@ public class RegistrationTestNegative extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testRegistrationNegative(String strUrl, HashMap hm, boolean isGenerateEmail){
+        System.out.println(Log4Test.info("Start : testRegistrationNegative"));
         driver.get(strUrl);
         Users user = new Users(hm, !isGenerateEmail);
         RegisterPage rp = new RegisterPage(user, driver);
         rp.openPage();
         rp.fillRegistrationForm();
-        Assert.assertFalse(rp.isRegiststrationSuccses(), ERROR_MSG1);
+        Assert.assertFalse(rp.isRegiststrationSuccses(), Log4Test.error("Can registration with non valid input data"));
+        System.out.println(Log4Test.info("Finish successful : testRegistrationNegative"));
 
     }
 

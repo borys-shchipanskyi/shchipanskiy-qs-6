@@ -1,6 +1,6 @@
-package Priject.hotlineTwsting.pages;
+package Priject.hotlineTesting.pages;
 
-import Priject.hotlineTwsting.actors.Users;
+import Priject.hotlineTesting.actors.Users;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

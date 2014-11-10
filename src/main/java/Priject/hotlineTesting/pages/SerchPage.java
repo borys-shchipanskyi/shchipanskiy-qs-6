@@ -1,10 +1,8 @@
-package Priject.hotlineTwsting.pages;
+package Priject.hotlineTesting.pages;
 
+import Priject.hotlineTesting.utils.Log4Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by boris on 05.11.14.
@@ -32,21 +30,29 @@ public class SerchPage extends Page  {
 
     public static boolean isPresent(){
         try {
+            System.out.println(Log4Test.info("Check if product :" +PRODUCT+" present in search result."));
             driver.findElement(SERCH_PRODUCT);
         }catch (Exception e){
-           return false;
+            System.out.println(Log4Test.error("Product :" +PRODUCT+" isn't present in search result"));
+            return false;
         }
+        System.out.println(Log4Test.info("Product :" + PRODUCT + " is present in search result"));
             return true;
     }
     public static boolean comparePrice(){
         String pricesReng;
+        System.out.println(Log4Test.info("Start compare price."));
         try{
             driver.findElement(SERCH_PRODUCT).click();
             driver.findElement(SERCH_PRICE).click();
             pricesReng = driver.findElement(SERCH_PRICES_RANGE).getText();
+
         }catch (Exception e){
+            System.out.println(Log4Test.error("Cannot find prices range."));
             return false;
         }
+        System.out.println(Log4Test.info("Find next price range: "+ pricesReng));
+        System.out.println(Log4Test.info("Finish compare price."));
         return isNotEqualsPrice(pricesReng);
     }
 

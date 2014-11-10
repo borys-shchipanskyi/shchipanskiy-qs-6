@@ -1,8 +1,8 @@
 package Tests.hotlineTesting;
 
-import Priject.hotlineTwsting.pages.SerchPage;
+import Priject.hotlineTesting.pages.SerchPage;
+import Priject.hotlineTesting.utils.Log4Test;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -21,12 +21,14 @@ public class FindProductNegstiveTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testFindProductNegative(String strUrl, String product){
+        System.out.println(Log4Test.info("Start : testFindProductNegative"));
         driver.get(strUrl);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
         sp.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertFalse(sp.isPresent());
+        Assert.assertFalse(sp.isPresent(), Log4Test.error("Can find product" + product));
+        System.out.println(Log4Test.info("Finish successful : testFindProductNegative"));
     }
 
 }

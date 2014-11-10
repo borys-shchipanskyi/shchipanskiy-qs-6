@@ -1,4 +1,4 @@
-package Priject.hotlineTwsting.pages;
+package Priject.hotlineTesting.pages;
 
 /**
  * Created by boris on 03.11.14.
