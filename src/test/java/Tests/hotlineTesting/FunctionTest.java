@@ -1,6 +1,9 @@
 package Tests.hotlineTesting;
 
+import Priject.hotlineTesting.selenium.WebDriverFactory;
+import Priject.hotlineTesting.selenium.WebDriverWrapper;
 import Priject.hotlineTesting.utils.Log4Test;
+import Priject.hotlineTesting.utils.PropertyLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
@@ -12,11 +15,12 @@ import java.util.concurrent.TimeUnit;
  * Created by bionic on 05.11.14.
  */
 public class FunctionTest {
-    public static WebDriver driver;
+    public static WebDriverWrapper driver;
 
     @BeforeSuite
     public void setInv(){
-        driver = new FirefoxDriver();
+        driver = WebDriverFactory.initDriver(PropertyLoader.loadProperty("browser.name"));
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().deleteAllCookies();

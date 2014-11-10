@@ -16,9 +16,9 @@
             </properties>
         </profile>
         <profile>
-            <id>chrome_local</id>
+            <id>htmlunit_local</id>
             <properties>
-                <browser.name>chrome</browser.name>
+                <browser.name>htmlunit</browser.name>
             </properties>
         </profile>
     </profiles>

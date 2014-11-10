@@ -23,6 +23,7 @@ public class Users {
         this.password = userInfo.get("password");
     }
 
+
     private String generateEmail(String Email){
         String newEmail = "";
         String email = "param@gmail.com";
