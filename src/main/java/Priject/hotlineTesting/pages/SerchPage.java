@@ -4,6 +4,8 @@ import Priject.hotlineTesting.utils.Log4Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by boris on 05.11.14.
  */
@@ -45,6 +47,7 @@ public class SerchPage extends Page  {
         try{
             driver.findElement(SERCH_PRODUCT).click();
             driver.findElement(SERCH_PRICE).click();
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             pricesReng = driver.findElement(SERCH_PRICES_RANGE).getText();
 
         }catch (Exception e){
