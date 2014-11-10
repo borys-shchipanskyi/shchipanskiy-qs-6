@@ -16,12 +16,13 @@ public class WebDriverFactory {
 
         if(driverName.equals(FIREFOX)){
             driverWripper = new WebDriverWrapper( new FirefoxDriver());
+        }else{
+            if(driverName.equals(HTMLUNIT)){
+                driverWripper = new WebDriverWrapper( new HtmlUnitDriver());
+            }
+            else
+                Assert.fail("invalid driver name");
         }
-        if(driverName.equals(HTMLUNIT)){
-            driverWripper = new WebDriverWrapper( new HtmlUnitDriver());
-        }
-        else
-            Assert.fail("invalid driver name");
 
        driverWripper.manage().deleteAllCookies();
        driverWripper.manage().window().maximize();

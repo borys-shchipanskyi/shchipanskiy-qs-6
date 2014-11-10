@@ -18,12 +18,8 @@ public class FunctionTest {
     public static WebDriverWrapper driver;
 
     @BeforeSuite
-    public void setInv(){
+    public void setEnv(){
         driver = WebDriverFactory.initDriver(PropertyLoader.loadProperty("browser.name"));
-
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().deleteAllCookies();
         Log4Test.info("Start Test Suite execution");
 
     }
