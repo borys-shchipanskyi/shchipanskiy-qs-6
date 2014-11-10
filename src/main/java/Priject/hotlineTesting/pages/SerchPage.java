@@ -13,7 +13,7 @@ public class SerchPage extends Page  {
 
     private static String PRODUCT ;
     private static By SERCH_PRODUCT;
-    private static By SERCH_PRICE = By.xpath("//span[contains(text(),'Ціни')]");
+    private static By SERCH_PRICE = By.xpath("//span[contains(text(),'Цени')]");
     private static By SERCH_PRICES_RANGE = By.className("orng");
 
 
