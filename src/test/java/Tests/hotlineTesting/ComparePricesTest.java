@@ -23,14 +23,14 @@ public class ComparePricesTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testComparePrice(String strUrl, String product) {
-        System.out.println(Log4Test.info("Start : testComparePrice"));
+        Log4Test.info("Start : testComparePrice");
         driver.get(strUrl);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
         sp.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Assert.assertTrue(sp.comparePrice(), Log4Test.error("There is only one pryce on product"));
-        System.out.println(Log4Test.info("Finish successful : testComparePrice"));
+        Log4Test.info("Finish successful : testComparePrice");
     }
 
 }

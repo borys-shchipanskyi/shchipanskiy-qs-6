@@ -31,14 +31,14 @@ public class RegistrationTestNegative extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testRegistrationNegative(String strUrl, HashMap hm, boolean isGenerateEmail){
-        System.out.println(Log4Test.info("Start : testRegistrationNegative"));
+        Log4Test.info("Start : testRegistrationNegative");
         driver.get(strUrl);
         Users user = new Users(hm, !isGenerateEmail);
         RegisterPage rp = new RegisterPage(user, driver);
         rp.openPage();
         rp.fillRegistrationForm();
         Assert.assertFalse(rp.isRegiststrationSuccses(), Log4Test.error("Can registration with non valid input data"));
-        System.out.println(Log4Test.info("Finish successful : testRegistrationNegative"));
+        Log4Test.info("Finish successful : testRegistrationNegative");
 
     }
 

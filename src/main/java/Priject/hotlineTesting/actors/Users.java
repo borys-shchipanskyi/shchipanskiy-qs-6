@@ -1,5 +1,7 @@
 package Priject.hotlineTesting.actors;
 
+import Priject.hotlineTesting.utils.Log4Test;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -15,6 +17,7 @@ public class Users {
     private String password;
 
     public Users(HashMap<String, String> userInfo, boolean isGenerateEmail){
+        Log4Test.info("Creat new user");
         this.email = (isGenerateEmail) ? generateEmail(userInfo.get("email")) : userInfo.get("email");
         this.nicName = userInfo.get("nicName");
         this.password = userInfo.get("password");

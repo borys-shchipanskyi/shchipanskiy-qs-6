@@ -21,14 +21,14 @@ public class FindProductNegstiveTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testFindProductNegative(String strUrl, String product){
-        System.out.println(Log4Test.info("Start : testFindProductNegative"));
+        Log4Test.info("Start : testFindProductNegative");
         driver.get(strUrl);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
         sp.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Assert.assertFalse(sp.isPresent(), Log4Test.error("Can find product" + product));
-        System.out.println(Log4Test.info("Finish successful : testFindProductNegative"));
+        Log4Test.info("Finish successful : testFindProductNegative");
     }
 
 }

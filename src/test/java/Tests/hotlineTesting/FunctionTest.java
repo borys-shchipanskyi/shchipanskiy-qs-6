@@ -20,16 +20,16 @@ public class FunctionTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().deleteAllCookies();
-        System.out.println(Log4Test.info("Start Test Suite execution"));;
+        Log4Test.info("Start Test Suite execution");
 
     }
 
 
     @AfterSuite
     public void cleanEnv(){
-        System.out.println(Log4Test.info("Tests Suite execution completed."));
         if (driver != null){
             driver.quit();
         }
+        Log4Test.info("Tests Suite execution completed.");
     }
 }

@@ -30,14 +30,14 @@ public class RegisterTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testRegistration(String strUrl, HashMap hm, boolean isGenerateEmail){
-        System.out.println(Log4Test.info("Start : testRegistration"));
+        Log4Test.info("Start : testRegistration");
         driver.get(strUrl);
         Users user = new Users(hm, isGenerateEmail);
         RegisterPage rp = new RegisterPage(user, driver);
         rp.openPage();
         rp.fillRegistrationForm();
         Assert.assertTrue(rp.isRegiststrationSuccses(), Log4Test.error("Cannot registration"));
-        System.out.println(Log4Test.info("Finish successful : testRegistration"));
+        Log4Test.info("Finish successful : testRegistration");
 
     }
 }

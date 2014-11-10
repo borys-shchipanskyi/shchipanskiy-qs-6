@@ -30,7 +30,7 @@ public class RegisterPage extends Page{
 
     public boolean fillRegistrationForm(){
         try{
-            System.out.println(Log4Test.info("Start fill registration form."));
+            Log4Test.info("Start fill registration form.");
             WebDriverWait wait = new WebDriverWait(driver, 1000);
             wait.until(ExpectedConditions.visibilityOf(driver.findElement(REG_FORM)));
 
@@ -42,21 +42,21 @@ public class RegisterPage extends Page{
 
         } catch (Exception e){
 
-            System.out.println(Log4Test.error("There are problem(s) with filing registration form"));
+            Log4Test.error("There are problem(s) with filing registration form");
             return false;
         }
-        System.out.println(Log4Test.info("Filling complet successful."));
+        Log4Test.info("Filling complet successful.");
         return true;
     }
     public boolean isRegiststrationSuccses(){
         try{
-            System.out.println(Log4Test.info("check is registration successful."));
+            Log4Test.info("check is registration successful.");
             driver.findElement(REG_IS_SUCCSES);
         }catch (Exception e){
-            System.out.println(Log4Test.error("Registration isn't successful."));
+            Log4Test.error("Registration isn't successful.");
             return false;
         }
-        System.out.println(Log4Test.info("Registration is successful."));
+        Log4Test.info("Registration is successful.");
         return true;
     }
 
