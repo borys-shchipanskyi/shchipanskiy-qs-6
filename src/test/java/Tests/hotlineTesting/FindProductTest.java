@@ -16,19 +16,18 @@ public class FindProductTest extends FunctionTest{
     @DataProvider
     public Object[][] testData(){
         return new Object[][] {
-                new Object[] {"http://hotline.ua/", "iPhone"}
+                new Object[] {"iPhone"}
         };
     }
 
     @Test(dataProvider = "testData")
-    public void testFindProduct(String strUrl, String product){
-        Log4Test.info("Start : testFindProduct");
-        driver.get(strUrl);
+    public void testFindProduct( String product){
+        Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
         sp.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertTrue(sp.isPresent(), Log4Test.error("Cannot find product" + product));
-        Log4Test.info("Finish successful : testFindProduct");
+        Assert.assertTrue(sp.isPresent(), Log4Test.error("Cannot find product " + product));
+        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
     }
 }

@@ -1,6 +1,7 @@
 package Priject.hotlineTesting.pages;
 
 import Priject.hotlineTesting.actors.Users;
+import Priject.hotlineTesting.selenium.WebDriverWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,7 +17,7 @@ public class LoginPage extends Page{
     private static final By LOGIN_BUTTON = By.className("blue-button");
     private static final By LOGIN_IS_SUCCSES = By.className("blue-button");
 
-    public LoginPage(Users user, WebDriver driver){
+    public LoginPage(Users user, WebDriverWrapper driver){
         super(driver);
         this.user = user;
     }

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,15 +16,16 @@ import java.util.concurrent.TimeUnit;
  * Created by bionic on 05.11.14.
  */
 public class FunctionTest {
+    public static final String MARKER = "###################";
     public static WebDriverWrapper driver;
 
     @BeforeSuite
     public void setEnv(){
         driver = WebDriverFactory.initDriver(PropertyLoader.loadProperty("browser.name"));
+        driver.get(PropertyLoader.loadProperty("site.url"));
         Log4Test.info("Start Test Suite execution");
 
     }
-
 
     @AfterSuite
     public void cleanEnv(){

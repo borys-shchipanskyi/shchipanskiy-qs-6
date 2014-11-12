@@ -17,20 +17,19 @@ public class ComparePricesTest extends FunctionTest{
     @DataProvider
     public Object[][] testData(){
         return new Object[][] {
-                new Object[] {"http://hotline.ua/", "iPhone"}
+                new Object[] {"iPhone"}
         };
     }
 
     @Test(dataProvider = "testData")
-    public void testComparePrice(String strUrl, String product) {
-        Log4Test.info("Start : testComparePrice");
-        driver.get(strUrl);
+    public void testComparePrice(String product) {
+        Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
         sp.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertTrue(sp.comparePrice(), Log4Test.error("There is only one pryce on product"));
-        Log4Test.info("Finish successful : testComparePrice");
+        Assert.assertTrue(sp.comparePrice(), Log4Test.error(FAIL_MSG));
+        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
     }
 
 }

@@ -17,7 +17,7 @@ public class RegistrationTestNegative extends FunctionTest{
     @DataProvider
     public Object[][] testData(){
         return new Object[][] {
-                new Object[] {"http://hotline.ua/", userInfo("param@gmail.com",  "test", "test"), true}
+                new Object[] {userInfo("param@gmail.com",  "test", "test"), true}
         };
     }
     public HashMap<String, String> userInfo(String email, String nicName, String password){
@@ -30,16 +30,14 @@ public class RegistrationTestNegative extends FunctionTest{
 
 
     @Test(dataProvider = "testData")
-    public void testRegistrationNegative(String strUrl, HashMap hm, boolean isGenerateEmail){
-        Log4Test.info("Start : testRegistrationNegative");
-        driver.get(strUrl);
+    public void testRegistrationNegative(HashMap hm, boolean isGenerateEmail){
+        Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
         Users user = new Users(hm, !isGenerateEmail);
         RegisterPage rp = new RegisterPage(user, driver);
         rp.openPage();
         rp.fillRegistrationForm();
         Assert.assertFalse(rp.isRegiststrationSuccses(), Log4Test.error("Can registration with non valid input data"));
-        Log4Test.info("Finish successful : testRegistrationNegative");
-
+        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
     }
 
 }

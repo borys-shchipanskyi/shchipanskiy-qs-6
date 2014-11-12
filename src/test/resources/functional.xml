@@ -8,6 +8,7 @@
             <class name="Tests.hotlineTesting.FindProductTest"/>
             <class name="Tests.hotlineTesting.FindProductNegstiveTest"/>
             <class name="Tests.hotlineTesting.ComparePricesTest"/>
+            <class name="Tests.hotlineTesting.ChoseRefrigerator"/>
         </classes>
     </test>
 </suite>

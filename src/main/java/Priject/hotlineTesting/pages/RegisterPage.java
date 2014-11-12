@@ -1,6 +1,7 @@
 package Priject.hotlineTesting.pages;
 
 import Priject.hotlineTesting.actors.Users;
+import Priject.hotlineTesting.selenium.WebDriverWrapper;
 import Priject.hotlineTesting.utils.Log4Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +24,7 @@ public class RegisterPage extends Page{
     private static final By REG_IS_SUCCSES = By.className("registr-successful");
     private static final By REG_FORM = By.className("page-registr-user");
 
-    public RegisterPage(Users user, WebDriver driver){
+    public RegisterPage(Users user, WebDriverWrapper driver){
         super(PAGE, driver);
         this.user = user;
     }
@@ -50,7 +51,7 @@ public class RegisterPage extends Page{
     }
     public boolean isRegiststrationSuccses(){
         try{
-            Log4Test.info("check is registration successful.");
+            Log4Test.info("Check is registration successful.");
             driver.findElement(REG_IS_SUCCSES);
         }catch (Exception e){
             Log4Test.error("Registration isn't successful.");

@@ -15,20 +15,19 @@ public class FindProductNegstiveTest extends FunctionTest{
     @DataProvider
     public Object[][] testData(){
         return new Object[][] {
-                new Object[] {"http://hotline.ua/", "Nexux"}
+                new Object[] {"Nexux"}
         };
     }
 
     @Test(dataProvider = "testData")
-    public void testFindProductNegative(String strUrl, String product){
-        Log4Test.info("Start : testFindProductNegative");
-        driver.get(strUrl);
+    public void testFindProductNegative(String product){
+        Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
         sp.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertFalse(sp.isPresent(), Log4Test.error("Can find product" + product));
-        Log4Test.info("Finish successful : testFindProductNegative");
+        Assert.assertFalse(sp.isPresent(), Log4Test.error("Can find product " + product));
+        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
     }
 
 }

@@ -1,5 +1,6 @@
 package Priject.hotlineTesting.pages;
 
+import Priject.hotlineTesting.selenium.WebDriverWrapper;
 import Priject.hotlineTesting.utils.Log4Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,7 @@ public class SerchPage extends Page  {
     private static By SERCH_PRICES_RANGE = By.className("orng");
 
 
-    public SerchPage(WebDriver driver, String product){
+    public SerchPage(WebDriverWrapper driver, String product){
         super(driver);
         this.PRODUCT = product;
         setSerchProduct();
@@ -32,13 +33,13 @@ public class SerchPage extends Page  {
 
     public static boolean isPresent(){
         try {
-            Log4Test.info("Check if product :" + PRODUCT + " present in search result.");
+            Log4Test.info("Check if product : " + PRODUCT + " present in search result.");
             driver.findElement(SERCH_PRODUCT);
         }catch (Exception e){
-            Log4Test.error("Product :" + PRODUCT + " isn't present in search result");
+            Log4Test.error("Product : " + PRODUCT + " isn't present in search result");
             return false;
         }
-        Log4Test.info("Product :" + PRODUCT + " is present in search result");
+        Log4Test.info("Product : " + PRODUCT + " is present in search result");
             return true;
     }
     public static boolean comparePrice(){
