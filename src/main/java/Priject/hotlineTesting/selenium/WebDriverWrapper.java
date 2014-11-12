@@ -14,12 +14,16 @@ import java.util.Set;
  * Created by bionic on 10.11.14.
  */
 public class WebDriverWrapper implements WebDriver{
-    private static WebDriver driver;
+    public static WebDriver driver;
     //private static final int TIME_TO_WAIT = 30;
     private static final int TIME_TO_WAIT =  Integer.valueOf(PropertyLoader.loadProperty("selenium.max.timeout"));
 
     public WebDriverWrapper(WebDriver dr){
         this.driver = dr;
+    }
+
+    public  WebDriver getOriginalDriver(){
+        return this.driver;
     }
 
     @Override

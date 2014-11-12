@@ -5,8 +5,10 @@ import Priject.hotlineTesting.selenium.WebDriverWrapper;
 import Priject.hotlineTesting.utils.Log4Test;
 import Priject.hotlineTesting.utils.PropertyLoader;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
 
 import java.util.List;
 
@@ -26,12 +28,41 @@ public class MainPage extends Page {
     public static boolean goToRefregirators(){
         Log4Test.info("Start goToRefregirators");
         try {
-            driver.get("http://hotline.ua/bt/holodilniki/");
+        Actions builder = new Actions(driver.getOriginalDriver());
+        builder.moveToElement(driver.findElement(BT)).perform();
+        sleep();
+        driver.findElement(By.xpath("//a[@href='/bt/holodilniki/']")).click();
 
-            driver.findElement(By.xpath(".//*[@id='filters']/div[5]/p[5]/a")).click();
+            //driver.get("http://hotline.ua/bt/holodilniki/");
+
+            //driver.findElement(By.xpath(".//*[@id='filters']/div[5]/p[5]/a")).click();
             sleep();
-            driver.findElement(By.xpath(".//*[@id='catalogue']/div[3]/div[2]/div/span")).click();
-            driver.findElement(By.xpath(".//a[contains(text(),'возрастанию цены')]")).click();
+            WebElement element = driver.findElement(By.xpath(".//*[@id='filters']/div[5]/a/b"));
+            element.click();
+
+
+
+
+            //((JavascriptExecutor) driver.getOriginalDriver()).executeScript("arguments[0].setAtribute")
+
+            element = driver.getOriginalDriver().findElement(By.className("jspDrag"));
+            ((JavascriptExecutor) driver.getOriginalDriver()).executeScript("scroll(0, 250);");
+            sleep();
+            //((JavascriptExecutor) element).executeScript("arguments[0].setAttribute('style')",element, "height: 100px; top: 214px;");
+            ((JavascriptExecutor) element).executeScript("arguments[0].setAttribute('style', 'top: 214px;')", element);
+            //"style", "height : 100px; top: ; ";
+            sleep();
+
+
+
+
+
+
+            //driver.findElement(By.xpath(".//*[@id='filters']/div/p/a[contains(text(),'LG']")).click();
+            //driver.findElement(By.xpath(".//*[@id='filters']//a[contains(text(),'LG']")).click();
+
+            //driver.findElement(By.xpath(".//*[@id='catalogue']/div[3]/div[2]/div/span")).click();
+           // driver.findElement(By.xpath(".//a[contains(text(),'возрастанию цены')]")).click();
             sleep();
         } catch (Exception e){
             Log4Test.error("Error in goToRefregirators");
