@@ -7,6 +7,7 @@ import Priject.hotlineTesting.utils.PropertyLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
@@ -19,7 +20,8 @@ public class FunctionTest {
     public static final String MARKER = "###################";
     public static WebDriverWrapper driver;
 
-    @BeforeSuite
+    //@BeforeSuite
+    @BeforeTest
     public void setEnv(){
         driver = WebDriverFactory.initDriver(PropertyLoader.loadProperty("browser.name"));
         driver.get(PropertyLoader.loadProperty("site.url"));
@@ -27,11 +29,21 @@ public class FunctionTest {
 
     }
 
-    @AfterSuite
+    @AfterTest
+    public void resetEnv(){
+       //driver.get(PropertyLoader.loadProperty("site.url"));
+        if (driver != null){
+            driver.quit();
+        }
+        Log4Test.info("Tests Suite execution completed.");
+
+    }
+
+    /*@AfterSuite
     public void cleanEnv(){
         if (driver != null){
             driver.quit();
         }
         Log4Test.info("Tests Suite execution completed.");
-    }
+    }*/
 }

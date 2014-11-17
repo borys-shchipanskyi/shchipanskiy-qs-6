@@ -46,19 +46,24 @@ public class RegisterPage extends Page{
             Log4Test.error("There are problem(s) with filing registration form");
             return false;
         }
+        sleep(5);
         Log4Test.info("Filling complet successful.");
         return true;
     }
     public boolean isRegiststrationSuccses(){
+        boolean status = false;
         try{
             Log4Test.info("Check is registration successful.");
-            driver.findElement(REG_IS_SUCCSES);
+            sleep(5);
+            if (driver.findElement(REG_IS_SUCCSES).isDisplayed()){
+                status = true;
+            };
         }catch (Exception e){
             Log4Test.error("Registration isn't successful.");
-            return false;
+            status =  false;
         }
         Log4Test.info("Registration is successful.");
-        return true;
+        return status;
     }
 
 }

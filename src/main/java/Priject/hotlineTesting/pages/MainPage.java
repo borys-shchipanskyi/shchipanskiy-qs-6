@@ -18,52 +18,28 @@ import java.util.List;
  */
 public class MainPage extends Page {
     public static final By BT = By.xpath("//b[contains(text(),'Бытовая техника')]");
-    public static final By BT2 = By.xpath("//b[contains(text(),'Бытовая техника')]/div/div/div/div/a[1]");
-    public static final By BT3 = By.xpath(".//*[@id='lv-1-548']/div/div/div/div/a[1]");
+    public static final By BT_HOLOD = By.xpath("//a[@href='/bt/holodilniki/']");
+    public static final By FILTER_FIRMA = By.xpath(".//*[@id='filters']/div[5]/p[5]/a");
+    public static final By REF_LG = By.xpath(".//*[@id='catalogue']/div[3]/div[2]/div/span");
+    public static final By PRICE_UP = By.xpath(".//a[contains(text(),'возрастанию цены')]");
 
 
     public MainPage(WebDriverWrapper driver){
         super(driver);
     }
+
     public static boolean goToRefregirators(){
-        Log4Test.info("Start goToRefregirators");
+        Log4Test.info("Start goToRefregirator");
         try {
-        Actions builder = new Actions(driver.getOriginalDriver());
-        builder.moveToElement(driver.findElement(BT)).perform();
-        sleep();
-        driver.findElement(By.xpath("//a[@href='/bt/holodilniki/']")).click();
-
-            //driver.get("http://hotline.ua/bt/holodilniki/");
-
-            //driver.findElement(By.xpath(".//*[@id='filters']/div[5]/p[5]/a")).click();
-            sleep();
-            WebElement element = driver.findElement(By.xpath(".//*[@id='filters']/div[5]/a/b"));
-            element.click();
-
-
-
-
-            //((JavascriptExecutor) driver.getOriginalDriver()).executeScript("arguments[0].setAtribute")
-
-            element = driver.getOriginalDriver().findElement(By.className("jspDrag"));
-            ((JavascriptExecutor) driver.getOriginalDriver()).executeScript("scroll(0, 250);");
-            sleep();
-            //((JavascriptExecutor) element).executeScript("arguments[0].setAttribute('style')",element, "height: 100px; top: 214px;");
-            ((JavascriptExecutor) element).executeScript("arguments[0].setAttribute('style', 'top: 214px;')", element);
-            //"style", "height : 100px; top: ; ";
-            sleep();
-
-
-
-
-
-
-            //driver.findElement(By.xpath(".//*[@id='filters']/div/p/a[contains(text(),'LG']")).click();
-            //driver.findElement(By.xpath(".//*[@id='filters']//a[contains(text(),'LG']")).click();
-
-            //driver.findElement(By.xpath(".//*[@id='catalogue']/div[3]/div[2]/div/span")).click();
-           // driver.findElement(By.xpath(".//a[contains(text(),'возрастанию цены')]")).click();
-            sleep();
+            Actions builder = new Actions(driver.getOriginalDriver());
+            builder.moveToElement(driver.findElement(BT)).perform();
+            sleep(5);
+            driver.findElement(BT_HOLOD).click();
+            driver.findElement(REF_LG).click();
+            driver.findElement(FILTER_FIRMA).click();
+            sleep(5);
+            driver.findElement(PRICE_UP).click();
+            sleep(5);
         } catch (Exception e){
             Log4Test.error("Error in goToRefregirators");
             return false;
@@ -75,9 +51,9 @@ public class MainPage extends Page {
         Log4Test.info("Start isSorted");
         List<WebElement> prices;
         try{
-            sleep();
-            WebElement element = driver.findElement(By.xpath("//div[@class='price']"));
-            prices = element.findElements(By.xpath("//span[@class='orng']"));
+            sleep(5);
+            WebElement element = driver.findElement(PRICE_CLASS);
+            prices = element.findElements(ORGN_CLASS);
 
         }catch (Exception e){
             Log4Test.error("Error in isSorted");
@@ -93,23 +69,7 @@ public class MainPage extends Page {
         Log4Test.info("Finish isSorted");
         return (firstPrice <= secondPrices);
     }
-    public static int getAvnPrice(WebElement element){
-        String[] num = element.getText().split("\\s+");
-        String buff = "";
-        int i = 0;
-        while (!num[i].equals("грн")){
-            buff += num[i];
-            i++;
-        }
-        return Integer.valueOf(buff);
-    }
 
 
-    public static void sleep(){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

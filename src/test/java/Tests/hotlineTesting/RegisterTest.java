@@ -35,7 +35,7 @@ public class RegisterTest extends FunctionTest{
         RegisterPage rp = new RegisterPage(user, driver);
         rp.openPage();
         rp.fillRegistrationForm();
-        Assert.assertTrue(rp.isRegiststrationSuccses(), Log4Test.error("Cannot registration"));
+        Assert.assertTrue(rp.isRegiststrationSuccses(), Log4Test.info("Cannot registration"));
         Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
 
     }
