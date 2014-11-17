@@ -25,6 +25,7 @@ public class FindProductTest extends FunctionTest{
         Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
+        //is searchPage and Main page is differend pages
         sp.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Assert.assertTrue(sp.isPresent(), Log4Test.error("Cannot find product " + product));

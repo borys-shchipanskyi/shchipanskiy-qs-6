@@ -54,7 +54,7 @@ public class MainPage extends Page {
             sleep(5);
             WebElement element = driver.findElement(PRICE_CLASS);
             prices = element.findElements(ORGN_CLASS);
-
+        // do not find element in custom logic
         }catch (Exception e){
             Log4Test.error("Error in isSorted");
             return false;
@@ -64,6 +64,9 @@ public class MainPage extends Page {
         if (firstPrice == -1 || secondPrices == -1){
             return false;
         }
+
+
+        //extract compare to other method
         Log4Test.info("isSorted: first price = "+ firstPrice);
         Log4Test.info("isSorted: second price = "+ secondPrices);
         Log4Test.info("Finish isSorted");

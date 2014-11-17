@@ -25,10 +25,12 @@ public class Page {
 
     public static String CLOSE_BANNER = "close";
     public static String SELECT_PLACE = "blue-button";
+    // this variables is not need
 
     public Page(WebDriverWrapper driver){
         this.driver = driver;
         cleanPage();
+        //we clean at start
         driver.get(PropertyLoader.loadProperty("site.url"));
     }
 
@@ -123,6 +125,7 @@ public class Page {
             i++;
         }
         return Integer.valueOf(buff);
+        // is main page has prices?
     }
 
 }

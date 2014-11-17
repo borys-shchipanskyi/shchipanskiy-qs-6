@@ -24,10 +24,13 @@ public class FindProductNegstiveTest extends FunctionTest{
         Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
+        //is searchPage and Main page is differend pages
+        //find logic on mainPage, why it not in searchPage
         sp.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Assert.assertFalse(sp.isPresent(), Log4Test.error("Can find product " + product));
         Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
+        // a lot of wait/ extract it into a method
     }
 
 }

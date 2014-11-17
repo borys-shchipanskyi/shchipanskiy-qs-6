@@ -18,6 +18,8 @@ public class RegistrationTestNegative extends FunctionTest{
     public Object[][] testData(){
         return new Object[][] {
                 new Object[] {userInfo("param@gmail.com",  "test", "test"), true}
+                // Why it is static data.
+                // it should check new data every time
         };
     }
     public HashMap<String, String> userInfo(String email, String nicName, String password){
@@ -33,6 +35,7 @@ public class RegistrationTestNegative extends FunctionTest{
     public void testRegistrationNegative(HashMap hm, boolean isGenerateEmail){
         Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
         Users user = new Users(hm, !isGenerateEmail);
+        //very dificult logic with new user
         RegisterPage rp = new RegisterPage(user, driver);
         rp.openPage();
         rp.fillRegistrationForm();

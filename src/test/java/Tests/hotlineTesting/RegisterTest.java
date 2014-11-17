@@ -22,6 +22,7 @@ public class RegisterTest extends FunctionTest{
     }
     public HashMap<String, String> userInfo(String email, String nicName, String password){
         HashMap hm = new HashMap();
+        //what is hm.
         hm.put("email", email);
         hm.put("nicName", nicName);
         hm.put("password", password);
@@ -33,6 +34,7 @@ public class RegisterTest extends FunctionTest{
         Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
         Users user = new Users(hm, isGenerateEmail);
         RegisterPage rp = new RegisterPage(user, driver);
+        // call class normally
         rp.openPage();
         rp.fillRegistrationForm();
         Assert.assertTrue(rp.isRegiststrationSuccses(), Log4Test.info("Cannot registration"));

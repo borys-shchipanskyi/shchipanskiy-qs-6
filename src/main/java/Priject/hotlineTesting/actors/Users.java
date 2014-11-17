@@ -19,6 +19,7 @@ public class Users {
     public Users(HashMap<String, String> userInfo, boolean isGenerateEmail){
         Log4Test.info("Creat new user");
         this.email = (isGenerateEmail) ? generateEmail(userInfo.get("email")) : userInfo.get("email");
+        //WTF
         this.nicName = userInfo.get("nicName");
         this.password = userInfo.get("password");
     }
@@ -31,9 +32,14 @@ public class Users {
         String regExp = "(\\S+)(\\@\\S+)";
         Pattern pt = Pattern.compile(regExp);
         Matcher m = pt.matcher(email);
-       if(m.find()) {
-           newEmail = m.group(1) + genereteNumber() + m.group(2);
+       try{
+           if(m.find()) {
+               newEmail = m.group(1) + genereteNumber() + m.group(2);
+           }
+       }catch (Exception e){
+           System.out.println(e);
        }
+
         Log4Test.info("Finish generate user's email");
         return newEmail;
     }

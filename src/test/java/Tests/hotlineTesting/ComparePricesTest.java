@@ -27,9 +27,12 @@ public class ComparePricesTest extends FunctionTest{
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         SerchPage sp = new SerchPage(driver, product);
         sp.findProduct(product);
+        //hat is sp. call it searchPage
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Assert.assertTrue(sp.isEqualsPrice(), Log4Test.error(FAIL_MSG));
         Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
+        // a lot of marker
+        // a lot of timeouts
     }
 
 }

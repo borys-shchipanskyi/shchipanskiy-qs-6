@@ -44,5 +44,6 @@ public class LoginPage extends Page{
             return false;
         }
         return true;
+//        what for this method and other methods in this class
     }
 }

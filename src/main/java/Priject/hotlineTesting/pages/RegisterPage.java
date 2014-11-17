@@ -39,7 +39,10 @@ public class RegisterPage extends Page{
             driver.findElement(REG_NIC_NAME).sendKeys(user.getNicName());
             driver.findElement(REG_PASSWORD).sendKeys(user.getPassword());
             driver.findElement(REG_PASSWORD2).sendKeys(user.getPassword());
+            // what is REG_PASSWORD2
             driver.findElement(REG_BUTTON).click();
+            // give to variables a normal_readeble names
+
 
         } catch (Exception e){
 
@@ -64,6 +67,8 @@ public class RegisterPage extends Page{
         }
         Log4Test.info("Registration is successful.");
         return status;
+        // a lot of set of instance status
+        // and you can check that something on page and not failure
     }
 
 }

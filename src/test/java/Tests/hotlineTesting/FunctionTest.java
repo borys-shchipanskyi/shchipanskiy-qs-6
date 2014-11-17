@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class FunctionTest {
     public static final String MARKER = "###################";
+    // extract MARKER to Log$test
     public static WebDriverWrapper driver;
 
     //@BeforeSuite

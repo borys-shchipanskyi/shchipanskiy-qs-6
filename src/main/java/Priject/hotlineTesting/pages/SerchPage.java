@@ -44,6 +44,7 @@ public class SerchPage extends Page  {
         }
         Log4Test.info("Product : " + PRODUCT + " is present in search result");
             return true;
+
     }
     public static boolean isEqualsPrice(){
         Log4Test.info("Start isEqualsPrice");
