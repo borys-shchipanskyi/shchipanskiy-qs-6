@@ -24,7 +24,8 @@ public class Users {
     }
 
 
-    private String generateEmail(String Email){
+    private static String generateEmail(String Email){
+        Log4Test.info("Start generate user's email");
         String newEmail = "";
         String email = "param@gmail.com";
         String regExp = "(\\S+)(\\@\\S+)";
