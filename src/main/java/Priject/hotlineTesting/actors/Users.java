@@ -32,13 +32,8 @@ public class Users {
         String regExp = "(\\S+)(\\@\\S+)";
         Pattern pt = Pattern.compile(regExp);
         Matcher m = pt.matcher(email);
-       try{
-           if(m.find()) {
-               newEmail = m.group(1) + genereteNumber() + m.group(2);
-           }
-       }catch (Exception e){
-           System.out.println(e);
-       }
+        m.find();
+        newEmail = m.group(1) + genereteNumber() + m.group(2);
 
         Log4Test.info("Finish generate user's email");
         return newEmail;
@@ -47,7 +42,7 @@ public class Users {
         String num ;
         Calendar cal = Calendar.getInstance();
         cal.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("YYMMHHmmss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yymmhhmmss");
         num = sdf.format(cal.getTime());
         return num;
     }
