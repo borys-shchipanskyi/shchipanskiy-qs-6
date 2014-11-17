@@ -17,6 +17,15 @@ import java.util.List;
  * Created by boris on 03.11.14.
  */
 public class MainPage extends Page {
+    public static final String MAIN_PAGE = PropertyLoader.loadProperty("site.url");
+
+    public static final By PAGE_SEARCHBOX_ID = By.id("searchbox");
+    public static final By PAGE_DO_SEARCH_ID = By.id("doSearch");
+
+    public static final By PAGE_CITY_CLOSE = By.cssSelector("a.blue-button.success");
+    public static final By PAGE_CLOSE = By.className("close");
+    public static final By PAGE_BANER = By.className("lightbox-form");
+
     public static final By BT = By.xpath("//b[contains(text(),'Бытовая техника')]");
     public static final By BT_HOLOD = By.xpath("//a[@href='/bt/holodilniki/']");
     public static final By FILTER_FIRMA = By.xpath(".//*[@id='filters']/div[5]/p[5]/a");
@@ -25,8 +34,77 @@ public class MainPage extends Page {
 
 
     public MainPage(WebDriverWrapper driver){
-        super(driver);
+        super(driver, MAIN_PAGE);
     }
+
+    // ---new isOpenPage
+
+    public static boolean isOpenPage(){
+        if (driver.getCurrentUrl() == MAIN_PAGE) {
+            Log4Test.info("MAIN : open -> " + MAIN_PAGE);
+
+            return true;
+        }
+        Log4Test.info("MAIN : cannot open page ->" + MAIN_PAGE);
+        return false;
+    }
+
+    //-- end --
+
+
+    // ---SERCH PARTH---
+
+
+    public static boolean doSearchProduct(String product){
+        Log4Test.info("MAIN -> do search product: " + product);
+        try {
+            driver.findElement(PAGE_SEARCHBOX_ID).clear();
+            driver.findElement(PAGE_SEARCHBOX_ID).sendKeys(product);
+            driver.findElement(PAGE_DO_SEARCH_ID).click();
+            //
+        }catch (Exception e){
+            Log4Test.error("MAIN : " + product + " error in do searching!");
+            return false;
+        }
+        Log4Test.info("MAIN : '" + product + "' is search...");
+        return true;
+    }
+
+    //--- END SERCH PARTH
+
+    //---CLOSE BUNNER---
+
+    public static boolean cleanPage(){
+        if(isNeedClean()) {
+            try {
+                Log4Test.info("Start to close banners.");
+                WebElement element = driver.findElement(PAGE_BANER);
+                if (element.isDisplayed()) {
+                    element.findElement(PAGE_CLOSE).click();
+                }
+                element = driver.findElement(PAGE_CITY_CLOSE);
+                if (element.isDisplayed()) {
+                    element.click();
+                }
+            } catch (Exception e) {
+                Log4Test.error("Error in 'close banners' part.");
+                return false;
+
+            }
+        }
+        Log4Test.info("Banners are close successful.");
+        return true;
+    }
+    public static boolean isNeedClean(){
+        try{
+            driver.findElement(PAGE_BANER);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+
+    }
+    //---END CLOSE BUNNER---
 
     public static boolean goToRefregirators(){
         Log4Test.info("Start goToRefregirator");

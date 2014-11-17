@@ -1,9 +1,11 @@
 package Tests.hotlineTesting;
 
+import Priject.hotlineTesting.pages.MainPage;
 import Priject.hotlineTesting.selenium.WebDriverFactory;
 import Priject.hotlineTesting.selenium.WebDriverWrapper;
 import Priject.hotlineTesting.utils.Log4Test;
 import Priject.hotlineTesting.utils.PropertyLoader;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
@@ -20,12 +22,14 @@ public class FunctionTest {
     public static final String MARKER = "###################";
     // extract MARKER to Log$test
     public static WebDriverWrapper driver;
-
+    public MainPage mainPage;
     //@BeforeSuite
     @BeforeTest
     public void setEnv(){
         driver = WebDriverFactory.initDriver(PropertyLoader.loadProperty("browser.name"));
-        driver.get(PropertyLoader.loadProperty("site.url"));
+        mainPage = new MainPage(driver);
+        mainPage.openPage();
+        mainPage.cleanPage();
         Log4Test.info("Start Test Suite execution");
 
     }

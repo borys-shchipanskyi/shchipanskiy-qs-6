@@ -10,16 +10,13 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by boris on 04.11.14.
  */
-public class Page {
-    private static By PAGE;
+public abstract class Page {
+    private static String PAGE;
+
+    private static By PAGE_ATTRIBUTE;
+
     public static WebDriverWrapper driver;
 
-    public static final By PAGE_CITY_CLOSE = By.cssSelector("a.blue-button.success");
-    public static final By PAGE_CLOSE = By.className("close");
-
-    public static final By PAGE_SEARCHBOX_ID = By.id("searchbox");
-    public static final By PAGE_DO_SEARCH_ID = By.id("doSearch");
-    public static final By PAGE_BANER = By.className("lightbox-form");
     public static final By PRICE_CLASS = By.xpath("//div[@class='price']");
     public static final By ORGN_CLASS = By.xpath("//span[@class='orng']");
 
@@ -27,79 +24,59 @@ public class Page {
     public static String SELECT_PLACE = "blue-button";
     // this variables is not need
 
+    public Page(WebDriverWrapper driver, String page){
+        this.driver = driver;
+        this.PAGE = page;
+    }
+
     public Page(WebDriverWrapper driver){
         this.driver = driver;
-        cleanPage();
-        //we clean at start
-        driver.get(PropertyLoader.loadProperty("site.url"));
-    }
-
-    public Page(By page, WebDriverWrapper driver){
-        this.driver = driver;
-        PAGE = page;
-        cleanPage();
-    }
-
-    public static boolean cleanPage(){
-        if(isNeedClean()) {
-            try {
-                Log4Test.info("Start clean page procedure.");
-                WebElement element = driver.findElement(PAGE_BANER);
-                if (element.isDisplayed()) {
-                    element.findElement(PAGE_CLOSE).click();
-                }
-                element = driver.findElement(PAGE_CITY_CLOSE);
-                if (element.isDisplayed()) {
-                    element.click();
-                }
-            } catch (Exception e) {
-                Log4Test.error("Error in clean page procedure.");
-                return false;
-
-            }
-        }
-        Log4Test.info("Page clean successful.");
-        return true;
-    }
-    public static boolean isNeedClean(){
-        try{
-            driver.findElement(PAGE_BANER);
-        }catch (Exception e){
-            return false;
-        }
-        return true;
-
     }
 
     public static boolean openPage(){
         try{
             Log4Test.info("Start open page.");
-            driver.findElement(PAGE).click();
+            driver.get(PAGE);
         } catch (Exception e){
             Log4Test.error("Error in open page.");
             return false;
         }
-        Log4Test.info("Finish open page.");
+        Log4Test.info("Page open successful.");
         return true;
     }
 
-    public static boolean isOpen(){
+    public static boolean isOpenPage(){
         try{
-            Log4Test.info("Check is page open.");
-            driver.findElement(PAGE);
+            Log4Test.info("PAGE: Check is page open.");
+            sleep(5);
+            driver.findElement(PAGE_ATTRIBUTE).isDisplayed();
         } catch (Exception e){
-            Log4Test.error("Error with check page.");
+            Log4Test.error("PAGE: Error with check page.");
             return false;
         }
-        Log4Test.info("Page is open.");
+        Log4Test.info("PAGE: Page is open.");
         return true;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static boolean findProduct(String product){
         try{
-            Log4Test.info("Try to find product : ."+ product);
-            driver.findElement(PAGE_SEARCHBOX_ID).clear();
-            driver.findElement(PAGE_SEARCHBOX_ID).sendKeys(product);
-            driver.findElement(PAGE_DO_SEARCH_ID).click();
+            Log4Test.info("Try to find product : ." + product);
+
             //Thread.sleep(1000);
         }catch (Exception e){
             Log4Test.error("Cannot find product : " + product);

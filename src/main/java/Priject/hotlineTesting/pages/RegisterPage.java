@@ -26,7 +26,7 @@ public class RegisterPage extends Page{
     private static final By REG_FORM = By.className("page-registr-user");
 
     public RegisterPage(Users user, WebDriverWrapper driver){
-        super(PAGE, driver);
+        super(driver);
         this.user = user;
     }
 

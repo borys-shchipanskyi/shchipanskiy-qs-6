@@ -2,7 +2,9 @@ package Tests.hotlineTesting;
 
 import Priject.hotlineTesting.pages.SerchPage;
 import Priject.hotlineTesting.utils.Log4Test;
+import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,10 +27,24 @@ public class FindProductTest extends FunctionTest{
     public void testFindProduct( String product){
         Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
         serchPage= new SerchPage(driver, product);
-        serchPage.findProduct(product);
+        //serchPage.findProduct(product);
+        mainPage.doSearchProduct(product);
+        System.out.println("is sp " + serchPage.isOpenPage());
+
+
+
+
+
+       // System.out.println("dp " + driver.findElement(By.className()).isDisplayed());
+
+        /*
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Assert.assertTrue(serchPage.isPresent());
         Log4Test.info("SUCCSES find product:" +  product);
         Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
-    }
+    */}
+
+    @AfterSuite
+    public void cleanEnv(){}
 }

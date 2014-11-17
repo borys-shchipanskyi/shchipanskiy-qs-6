@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class SerchPage extends Page  {
 
     private static String PRODUCT ;
-    private static By SERCH_PRODUCT;
+
     private static By SERCH_PRICE = By.xpath("//span[contains(text(),'Цены')]");
     //private static By SERCH_PRICE = By.xpath("//span[contains(text(),'Ціни')]");
 
@@ -23,17 +23,13 @@ public class SerchPage extends Page  {
     public SerchPage(WebDriverWrapper driver, String product){
         super(driver);
         this.PRODUCT = product;
-        setSerchProduct();
+
     }
 
-    private void setPRODUCT(String product) {
-        this.PRODUCT = product;
-    }
-    private void setSerchProduct(){
-        this.SERCH_PRODUCT = By.xpath("//a[contains(text(),'"+this.PRODUCT+"')]");
-    }
 
-    public static boolean isPresent(){
+
+
+   /* public static boolean isPresent(){
         try {
             Log4Test.info("Check if product : " + PRODUCT + " present in search result.");
             driver.findElement(SERCH_PRODUCT);
@@ -45,7 +41,7 @@ public class SerchPage extends Page  {
         Log4Test.info("Product : " + PRODUCT + " is present in search result");
             return true;
 
-    }
+    }*/
     public static boolean isEqualsPrice(){
         Log4Test.info("Start isEqualsPrice");
         List<WebElement> prices;
