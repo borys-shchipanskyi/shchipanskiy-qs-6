@@ -5,6 +5,7 @@ import Priject.hotlineTesting.selenium.WebDriverWrapper;
 import Priject.hotlineTesting.utils.Log4Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,20 +30,17 @@ public class RegisterPage extends Page{
         this.user = user;
     }
 
+
     public boolean fillRegistrationForm(){
         try{
             Log4Test.info("Start fill registration form.");
             WebDriverWait wait = new WebDriverWait(driver, 1000);
             wait.until(ExpectedConditions.visibilityOf(driver.findElement(REG_FORM)));
-
             driver.findElement(REG_EMAIL).sendKeys(user.getEmail());
             driver.findElement(REG_NIC_NAME).sendKeys(user.getNicName());
             driver.findElement(REG_PASSWORD).sendKeys(user.getPassword());
             driver.findElement(REG_PASSWORD2).sendKeys(user.getPassword());
-            // what is REG_PASSWORD2
             driver.findElement(REG_BUTTON).click();
-            // give to variables a normal_readeble names
-
 
         } catch (Exception e){
 
@@ -53,6 +51,8 @@ public class RegisterPage extends Page{
         Log4Test.info("Filling complet successful.");
         return true;
     }
+
+
     public boolean isRegiststrationSuccses(){
         boolean status = false;
         try{
