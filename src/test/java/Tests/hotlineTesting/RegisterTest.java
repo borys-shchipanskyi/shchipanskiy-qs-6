@@ -37,7 +37,8 @@ public class RegisterTest extends FunctionTest{
         // call class normally
         rp.openPage();
         rp.fillRegistrationForm();
-        Assert.assertTrue(rp.isRegiststrationSuccses(), Log4Test.info("Cannot registration"));
+        Assert.assertTrue(rp.isRegiststrationSuccses());
+        Log4Test.info("SUCCSES");
         Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
 
     }

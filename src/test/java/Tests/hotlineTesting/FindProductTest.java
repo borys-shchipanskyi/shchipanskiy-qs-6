@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
  * Created by boris on 05.11.14.
  */
 public class FindProductTest extends FunctionTest{
+    private SerchPage serchPage;
 
     @DataProvider
     public Object[][] testData(){
@@ -23,12 +24,11 @@ public class FindProductTest extends FunctionTest{
     @Test(dataProvider = "testData")
     public void testFindProduct( String product){
         Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
+        serchPage= new SerchPage(driver, product);
+        serchPage.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        SerchPage sp = new SerchPage(driver, product);
-        //is searchPage and Main page is differend pages
-        sp.findProduct(product);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertTrue(sp.isPresent(), Log4Test.error("Cannot find product " + product));
+        Assert.assertTrue(serchPage.isPresent());
+        Log4Test.info("SUCCSES find product:" +  product);
         Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
     }
 }

@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
  * Created by matafix on 09.11.14.
  */
 public class FindProductNegstiveTest extends FunctionTest{
+    private SerchPage serchPage;
+
     @DataProvider
     public Object[][] testData(){
         return new Object[][] {
@@ -22,13 +24,14 @@ public class FindProductNegstiveTest extends FunctionTest{
     @Test(dataProvider = "testData")
     public void testFindProductNegative(String product){
         Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        SerchPage sp = new SerchPage(driver, product);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        serchPage = new SerchPage(driver, product);
         //is searchPage and Main page is differend pages
         //find logic on mainPage, why it not in searchPage
-        sp.findProduct(product);
+        serchPage.findProduct(product);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertFalse(sp.isPresent(), Log4Test.error("Can find product " + product));
+        Assert.assertFalse(serchPage.isPresent());
+        Log4Test.info("SUCCSES");
         Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
         // a lot of wait/ extract it into a method
     }

@@ -25,7 +25,7 @@ public class ChoseRefrigerator extends FunctionTest {
         MainPage mp = new MainPage(driver);
         mp.goToRefregirators();
         // what is mp/ call it normally
-        Assert.assertTrue(mp.isSorted(), "Product don't sort");
+        Assert.assertTrue(mp.isSorted());
         Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
     }
     //@AfterSuite

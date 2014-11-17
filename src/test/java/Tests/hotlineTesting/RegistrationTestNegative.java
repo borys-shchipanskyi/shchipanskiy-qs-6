@@ -39,7 +39,8 @@ public class RegistrationTestNegative extends FunctionTest{
         RegisterPage rp = new RegisterPage(user, driver);
         rp.openPage();
         rp.fillRegistrationForm();
-        Assert.assertFalse(rp.isRegiststrationSuccses(), Log4Test.error("Can registration with non valid input data"));
+        Assert.assertFalse(rp.isRegiststrationSuccses());
+        Log4Test.info("SUCCSES");
         Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
     }
 
