@@ -33,7 +33,7 @@ public class Users {
         Matcher m = pt.matcher(email);
         m.find();
         newEmail = m.group(1)+genereteNumber()+m.group(2);
-
+        Log4Test.info("Finish generate user's email");
         return newEmail;
     }
     private static String genereteNumber(){
