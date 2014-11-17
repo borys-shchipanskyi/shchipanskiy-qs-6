@@ -31,8 +31,9 @@ public class Users {
         String regExp = "(\\S+)(\\@\\S+)";
         Pattern pt = Pattern.compile(regExp);
         Matcher m = pt.matcher(email);
-        boolean res = m.find();
-        newEmail = m.group(1)+genereteNumber()+m.group(2);
+       if(m.find()) {
+           newEmail = m.group(1) + genereteNumber() + m.group(2);
+       }
         Log4Test.info("Finish generate user's email");
         return newEmail;
     }
