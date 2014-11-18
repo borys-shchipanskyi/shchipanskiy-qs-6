@@ -29,7 +29,6 @@ public class FunctionTest {
         driver = WebDriverFactory.initDriver(PropertyLoader.loadProperty("browser.name"));
         mainPage = new MainPage(driver);
         mainPage.openPage();
-        mainPage.cleanPage();
         Log4Test.info("Start Test Suite execution");
 
     }
