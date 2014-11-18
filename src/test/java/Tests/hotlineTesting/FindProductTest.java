@@ -26,8 +26,10 @@ public class FindProductTest extends FunctionTest{
     @Test(dataProvider = "testData")
     public void testFindProduct( String product){
         Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
+        System.out.println("is sp " + mainPage.isOpenPage());
         serchPage= new SerchPage(driver, product);
         //serchPage.findProduct(product);
+
         mainPage.doSearchProduct(product);
         System.out.println("is sp " + serchPage.isOpenPage());
 

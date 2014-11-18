@@ -25,8 +25,10 @@ public class RegisterPage extends Page{
     private static final By REG_IS_SUCCSES = By.className("registr-successful");
     private static final By REG_FORM = By.className("page-registr-user");
 
+    public static By PAGE_ATTRIBUTE = By.className("catalog");
+
     public RegisterPage(Users user, WebDriverWrapper driver){
-        super(driver);
+        super(driver, PAGE_ATTRIBUTE);
         this.user = user;
     }
 

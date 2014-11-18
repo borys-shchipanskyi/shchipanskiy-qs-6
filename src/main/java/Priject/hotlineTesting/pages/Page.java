@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 public abstract class Page {
     private static String PAGE;
 
-    private static By PAGE_ATTRIBUTE;
+    public static By PAGE_ATTRIBUTE;
 
     public static WebDriverWrapper driver;
 
@@ -29,8 +29,9 @@ public abstract class Page {
         this.PAGE = page;
     }
 
-    public Page(WebDriverWrapper driver){
+    public Page(WebDriverWrapper driver, By pageAtribute){
         this.driver = driver;
+        PAGE_ATTRIBUTE = pageAtribute;
     }
 
     public static boolean openPage(){
@@ -47,7 +48,7 @@ public abstract class Page {
 
     public static boolean isOpenPage(){
         try{
-            Log4Test.info("PAGE: Check is page open.");
+            Log4Test.info("PAGE: Check is page open. " + PAGE_ATTRIBUTE);
             sleep(5);
             driver.findElement(PAGE_ATTRIBUTE).isDisplayed();
         } catch (Exception e){

@@ -11,10 +11,11 @@ import java.util.NoSuchElementException;
  */
 public class GoodsPage extends Page{
     private static By SERCH_PRODUCT;
-    private static final By PAGE_ATTRIBUTE = By.className("catalog");
+
+    public static By PAGE_ATTRIBUTE = By.className("catalog");
 
     public GoodsPage(WebDriverWrapper driver, String product){
-        super(driver);
+        super(driver, PAGE_ATTRIBUTE);
         setSerchProduct(product);
     }
     private static void setSerchProduct(String product){

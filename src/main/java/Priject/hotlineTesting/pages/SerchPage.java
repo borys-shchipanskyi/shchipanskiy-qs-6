@@ -18,10 +18,10 @@ public class SerchPage extends Page  {
 
     private static By SERCH_PRICE = By.xpath("//span[contains(text(),'Цены')]");
     //private static By SERCH_PRICE = By.xpath("//span[contains(text(),'Ціни')]");
-
+    public static By PAGE_ATTRIBUTE = By.className("catalog");
 
     public SerchPage(WebDriverWrapper driver, String product){
-        super(driver);
+        super(driver,PAGE_ATTRIBUTE );
         this.PRODUCT = product;
 
     }

@@ -17,7 +17,7 @@ import java.util.List;
  * Created by boris on 03.11.14.
  */
 public class MainPage extends Page {
-    public static final String MAIN_PAGE = PropertyLoader.loadProperty("site.url");
+    public static final String MAIN_PAGE = PropertyLoader.loadProperty("site.url") + '/';
 
     public static final By PAGE_SEARCHBOX_ID = By.id("searchbox");
     public static final By PAGE_DO_SEARCH_ID = By.id("doSearch");
@@ -40,12 +40,11 @@ public class MainPage extends Page {
     // ---new isOpenPage
 
     public static boolean isOpenPage(){
-        if (driver.getCurrentUrl() == MAIN_PAGE) {
+        if (driver.getCurrentUrl().equals(MAIN_PAGE)) {
             Log4Test.info("MAIN : open -> " + MAIN_PAGE);
-
             return true;
         }
-        Log4Test.info("MAIN : cannot open page ->" + MAIN_PAGE);
+        Log4Test.info("MAIN : cannot open page -> " + MAIN_PAGE);
         return false;
     }
 
