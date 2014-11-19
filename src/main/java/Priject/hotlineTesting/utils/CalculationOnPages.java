@@ -2,7 +2,6 @@ package Priject.hotlineTesting.utils;
 
 import Priject.hotlineTesting.selenium.WebDriverWrapper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -11,7 +10,6 @@ import java.util.List;
  * Created by boris on 18.11.14.
  */
 public class CalculationOnPages {
-    private static By SERCH_PRICE = By.xpath("//span[contains(text(),'Цены')]");
     public static final By PRICE_CLASS = By.xpath("//div[@class='price']");
     public static final By ORGN_CLASS = By.xpath("//span[@class='orng']");
 

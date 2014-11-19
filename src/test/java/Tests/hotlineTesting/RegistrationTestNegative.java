@@ -34,7 +34,7 @@ public class RegistrationTestNegative extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testRegistrationNegative(HashMap userInfoHashMap, boolean isGenerateEmail){
-        Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
+        Log4Test.start( getClass().getName());
         user = new Users(userInfoHashMap, isGenerateEmail);
         mainPage = new MainPage(driver);
         mainPage.openPage();
@@ -42,8 +42,8 @@ public class RegistrationTestNegative extends FunctionTest{
         registrationPage = new RegistrationPage(user, driver);
         mainPage.goToRegistration();
         Assert.assertTrue(registrationPage.fillRegistrationForm(), "cannot fill registration form");
-        Assert.assertFalse(registrationPage.isRegistrationSuccses(), "registration fail!");
-        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
+        Assert.assertFalse(registrationPage.isRegistrationSuccess(), "registration fail, can do registration with input data!");
+        Log4Test.end(getClass().getName());
     }
 
 }

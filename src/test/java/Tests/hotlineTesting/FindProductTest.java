@@ -23,7 +23,7 @@ public class FindProductTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testFindProduct( String product){
-        Log4Test.info(MARKER + " START " + getClass().getName() + " " + MARKER);
+        Log4Test.start( getClass().getName());
         mainPage = new MainPage(driver);
         mainPage.openPage();
         mainPage.cleanPage();
@@ -31,8 +31,8 @@ public class FindProductTest extends FunctionTest{
         mainPage.doSearchProduct(product);
         Assert.assertTrue(goodsPage.isOpenPage(), "Page with search result isn't load");
         Assert.assertTrue(goodsPage.isProductPresent(), "Product '" + product + "' doesn't find!");
-        Log4Test.info("SUCCSES");
-        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
+        Log4Test.info("SUCCESS");
+        Log4Test.end(getClass().getName());
     }
 
 }

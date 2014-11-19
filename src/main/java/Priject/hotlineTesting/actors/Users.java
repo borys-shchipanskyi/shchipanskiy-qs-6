@@ -17,9 +17,8 @@ public class Users {
     private String password;
 
     public Users(HashMap<String, String> userInfo, boolean isGenerateEmail){
-        Log4Test.info("Creat new user");
+        Log4Test.info("Create new user");
         this.email = (isGenerateEmail) ? generateEmail(userInfo.get("email")) : userInfo.get("email");
-        //WTF
         this.nicName = userInfo.get("nicName");
         this.password = userInfo.get("password");
     }
@@ -33,12 +32,12 @@ public class Users {
         Pattern pt = Pattern.compile(regExp);
         Matcher m = pt.matcher(email);
         m.find();
-        newEmail = m.group(1) + genereteNumber() + m.group(2);
+        newEmail = m.group(1) + generateNumber() + m.group(2);
 
         Log4Test.info("Finish generate user's email");
         return newEmail;
     }
-    private String genereteNumber(){
+    private String generateNumber(){
         String num ;
         Calendar cal = Calendar.getInstance();
         cal.getTime();

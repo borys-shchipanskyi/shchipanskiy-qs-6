@@ -17,19 +17,19 @@ import java.util.List;
  * Created by boris on 03.11.14.
  */
 public class MainPage extends Page {
-    public static final String MAIN_PAGE = PropertyLoader.loadProperty("site.url") + '/';
+    private static final String MAIN_PAGE = PropertyLoader.loadProperty("site.url") + '/';
 
-    public final By PAGE_SEARCHBOX_ID = By.id("searchbox");
-    public final By PAGE_DO_SEARCH_ID = By.id("doSearch");
+    private final By PAGE_SEARCHBOX_ID = By.id("searchbox");
+    private final By PAGE_DO_SEARCH_ID = By.id("doSearch");
 
-    public final By PAGE_CITY_CLOSE = By.cssSelector("a.blue-button.success");
-    public final By PAGE_CLOSE = By.className("close");
-    public final By PAGE_BANER = By.className("lightbox-form");
+    private final By PAGE_CITY_CLOSE = By.cssSelector("a.blue-button.success");
+    private final By PAGE_CLOSE = By.className("close");
+    private final By PAGE_BANER = By.className("lightbox-form");
 
-    public final By BT = By.xpath("//b[contains(text(),'Бытовая техника')]");
-    public final By BT_HOLOD = By.xpath("//a[@href='/bt/holodilniki/']");
+    private final By BT = By.xpath("//b[contains(text(),'Бытовая техника')]");
+    private final By BT_HOLOD = By.xpath("//a[@href='/bt/holodilniki/']");
 
-    private final By REGISTRATION_PAGE = By.className("reg");
+    private  final By REGISTRATION_PAGE = By.className("reg");
 
     public MainPage(WebDriverWrapper driver){
         super(driver, MAIN_PAGE);

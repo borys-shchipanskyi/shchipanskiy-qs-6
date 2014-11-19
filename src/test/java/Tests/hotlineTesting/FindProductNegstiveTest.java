@@ -23,15 +23,15 @@ public class FindProductNegstiveTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testFindProductNegative(String product){
-        Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
+        Log4Test.start( getClass().getName());
         mainPage = new MainPage(driver);
         mainPage.openPage();
         mainPage.cleanPage();
         goodsPage= new GoodsPage(driver, product);
         mainPage.doSearchProduct(product);
         Assert.assertFalse(goodsPage.isProductPresent(), "Can find  product '" + product + "'!");
-        Log4Test.info("SUCCSES");
-        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
+        Log4Test.info("SUCCESSFUL");
+        Log4Test.end(getClass().getName());
 
     }
 

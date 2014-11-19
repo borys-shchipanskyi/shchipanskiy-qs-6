@@ -15,7 +15,6 @@ import java.util.Set;
  */
 public class WebDriverWrapper implements WebDriver{
     public static WebDriver driver;
-    //private static final int TIME_TO_WAIT = 30;
     private static final int TIME_TO_WAIT =  Integer.valueOf(PropertyLoader.loadProperty("selenium.max.timeout"));
 
     public WebDriverWrapper(WebDriver dr){

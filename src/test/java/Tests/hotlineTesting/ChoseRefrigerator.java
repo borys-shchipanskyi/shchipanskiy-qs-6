@@ -22,7 +22,7 @@ public class ChoseRefrigerator extends FunctionTest {
 
     @Test(dataProvider = "testData")
     public void testComparePrice(String company, String filterPrice) {
-        Log4Test.info(MARKER + " START " + getClass().getName() + " " + MARKER);
+        Log4Test.start( getClass().getName());
         mainPage = new MainPage(driver);
         mainPage.openPage();
         mainPage.cleanPage();
@@ -30,6 +30,6 @@ public class ChoseRefrigerator extends FunctionTest {
         Assert.assertTrue(mainPage.goToRefrigerators(), "Cannot go to Refrigerators!");
         Assert.assertTrue(goodsPage.setCompanyFilters(), "Cannot  set filters for test!");
         Assert.assertTrue(goodsPage.isProductHasTwoPlusValues(0), "product don't sort!");
-        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
+        Log4Test.end(getClass().getName());
     }
 }

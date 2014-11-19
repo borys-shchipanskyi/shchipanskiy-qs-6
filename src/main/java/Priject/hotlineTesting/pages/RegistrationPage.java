@@ -4,8 +4,6 @@ import Priject.hotlineTesting.actors.Users;
 import Priject.hotlineTesting.selenium.WebDriverWrapper;
 import Priject.hotlineTesting.utils.Log4Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,7 +20,7 @@ public class RegistrationPage extends Page{
     private final By REG_PASSWORD = By.name("password");
     private final By REG_PASSWORD2 = By.name("password2");
     private final By REG_BUTTON = By.className("blue-button");
-    private final By REG_IS_SUCCSES = By.className("registr-successful");
+    private final By REG_IS_SUCCESS = By.className("registr-successful");
     private final By REG_FORM = By.className("page-registr-user");
 
     public static By PAGE_ATTRIBUTE = By.className("catalog");
@@ -55,12 +53,12 @@ public class RegistrationPage extends Page{
     }
 
 
-    public boolean isRegistrationSuccses(){
+    public boolean isRegistrationSuccess(){
         boolean status = false;
         try{
             Log4Test.info("Check is registration successful.");
             sleep(5);
-            if (driver.findElement(REG_IS_SUCCSES).isDisplayed()){
+            if (driver.findElement(REG_IS_SUCCESS).isDisplayed()){
                 status = true;
             }
         }catch (Exception e){

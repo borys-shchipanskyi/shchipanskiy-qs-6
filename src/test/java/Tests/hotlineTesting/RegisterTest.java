@@ -33,7 +33,7 @@ public class RegisterTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testRegistration(HashMap userInfoHashMap, boolean isGenerateEmail){
-        Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
+        Log4Test.start( getClass().getName());
         mainPage = new MainPage(driver);
         user = new Users(userInfoHashMap, isGenerateEmail);
         mainPage.openPage();
@@ -41,8 +41,8 @@ public class RegisterTest extends FunctionTest{
         registrationPage = new RegistrationPage(user, driver);
         mainPage.goToRegistration();
         Assert.assertTrue(registrationPage.fillRegistrationForm(), "cannot fill registration form");
-        Assert.assertTrue(registrationPage.isRegistrationSuccses(), "registration fail!");
-        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
+        Assert.assertTrue(registrationPage.isRegistrationSuccess(), "registration fail!");
+        Log4Test.end(getClass().getName());
 
     }
 }

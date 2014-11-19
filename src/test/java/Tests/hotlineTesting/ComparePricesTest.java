@@ -25,7 +25,7 @@ public class ComparePricesTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testComparePrice(String product) {
-        Log4Test.info(MARKER + " START " + getClass().getName() + " " + MARKER);
+        Log4Test.start( getClass().getName());
         mainPage = new MainPage(driver);
         mainPage.openPage();
         mainPage.cleanPage();
@@ -35,7 +35,7 @@ public class ComparePricesTest extends FunctionTest{
         Assert.assertTrue(goodsPage.isProductPresent(), "Product '" + product + "' doesn't find!");
         Assert.assertTrue(goodsPage.isProductHasTwoPlusValues(3), "Product '" + product + "' Havent two+ values!");
         Log4Test.info("SUCCESSFUL");
-        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
+        Log4Test.end(getClass().getName());
     }
 
 }
