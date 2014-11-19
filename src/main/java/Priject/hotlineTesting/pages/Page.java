@@ -11,30 +11,26 @@ import org.openqa.selenium.WebElement;
  * Created by boris on 04.11.14.
  */
 public abstract class Page {
-    private static String PAGE;
+    private String PAGE;
 
-    public static By PAGE_ATTRIBUTE;
+    public By PAGE_ATTRIBUTE;
 
-    public static WebDriverWrapper driver;
+    public WebDriverWrapper driver;
 
-    public static final By PRICE_CLASS = By.xpath("//div[@class='price']");
-    public static final By ORGN_CLASS = By.xpath("//span[@class='orng']");
-
-    public static String CLOSE_BANNER = "close";
-    public static String SELECT_PLACE = "blue-button";
-    // this variables is not need
-
-    public Page(WebDriverWrapper driver, String page){
-        this.driver = driver;
-        this.PAGE = page;
+    public Page(WebDriverWrapper dr, String page){
+        driver = dr;
+        PAGE = page;
     }
 
-    public Page(WebDriverWrapper driver, By pageAtribute){
-        this.driver = driver;
+    public Page(WebDriverWrapper dr, By pageAtribute){
+        driver = dr;
         PAGE_ATTRIBUTE = pageAtribute;
     }
+    public Page(WebDriverWrapper dr){
+        driver = dr;
+    }
 
-    public static boolean openPage(){
+    public boolean openPage(){
         try{
             Log4Test.info("Start open page.");
             driver.get(PAGE);
@@ -46,7 +42,7 @@ public abstract class Page {
         return true;
     }
 
-    public static boolean isOpenPage(){
+    public boolean isOpenPage(){
         try{
             Log4Test.info("PAGE: Check is page open. " + PAGE_ATTRIBUTE);
             sleep(5);
@@ -59,51 +55,14 @@ public abstract class Page {
         return true;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static boolean findProduct(String product){
-        try{
-            Log4Test.info("Try to find product : ." + product);
-
-            //Thread.sleep(1000);
-        }catch (Exception e){
-            Log4Test.error("Cannot find product : " + product);
-            return false;
-        }
-        Log4Test.info("product find successful.");
-        return true;
-    }
-    public static void sleep(int sec){
+    public void sleep(int sec){
         try {
-            Log4Test.info("Sleap to "+sec+".");
+            Log4Test.info("Sleap "+sec+" sec.");
             Thread.sleep(sec * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-    public static int getAvnPrice(WebElement element){
-        String[] num = element.getText().split("\\s+");
-        String buff = "";
-        int i = 0;
-        while (!num[i].equals("грн")){
-            buff += num[i];
-            i++;
-        }
-        return Integer.valueOf(buff);
-        // is main page has prices?
-    }
+
 
 }

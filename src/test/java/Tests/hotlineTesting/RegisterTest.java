@@ -1,7 +1,8 @@
 package Tests.hotlineTesting;
 
 import Priject.hotlineTesting.actors.Users;
-import Priject.hotlineTesting.pages.RegisterPage;
+import Priject.hotlineTesting.pages.MainPage;
+import Priject.hotlineTesting.pages.RegistrationPage;
 import Priject.hotlineTesting.utils.Log4Test;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -13,6 +14,8 @@ import java.util.HashMap;
  * Created by boris on 03.11.14.
  */
 public class RegisterTest extends FunctionTest{
+    private  RegistrationPage registrationPage;
+    private  Users user;
 
     @DataProvider
     public Object[][] testData(){
@@ -21,25 +24,25 @@ public class RegisterTest extends FunctionTest{
         };
     }
     public HashMap<String, String> userInfo(String email, String nicName, String password){
-        HashMap hm = new HashMap();
-        //what is hm.
-        hm.put("email", email);
-        hm.put("nicName", nicName);
-        hm.put("password", password);
-        return hm;
+        HashMap userInfoHashMap = new HashMap();
+        userInfoHashMap.put("email", email);
+        userInfoHashMap.put("nicName", nicName);
+        userInfoHashMap.put("password", password);
+        return userInfoHashMap;
     }
 
     @Test(dataProvider = "testData")
-    public void testRegistration(HashMap hm, boolean isGenerateEmail){
+    public void testRegistration(HashMap userInfoHashMap, boolean isGenerateEmail){
         Log4Test.info(MARKER+" START "+getClass().getName()+ " "+MARKER);
-       /* Users user = new Users(hm, isGenerateEmail);
-        RegisterPage rp = new RegisterPage(user, driver);
-        // call class normally
-        rp.openPage();
-        rp.fillRegistrationForm();
-        Assert.assertTrue(rp.isRegiststrationSuccses());
-        Log4Test.info("SUCCSES");
-       */ Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
+        mainPage = new MainPage(driver);
+        user = new Users(userInfoHashMap, isGenerateEmail);
+        mainPage.openPage();
+        mainPage.cleanPage();
+        registrationPage = new RegistrationPage(user, driver);
+        mainPage.goToRegistration();
+        Assert.assertTrue(registrationPage.fillRegistrationForm(), "cannot fill registration form");
+        Assert.assertTrue(registrationPage.isRegistrationSuccses(), "registration fail!");
+        Log4Test.info(MARKER+" Finish "+getClass().getName()+ " "+MARKER);
 
     }
 }

@@ -25,7 +25,7 @@ public class Users {
     }
 
 
-    private static String generateEmail(String Email){
+    private String generateEmail(String Email){
         Log4Test.info("Start generate user's email");
         String newEmail = "";
         String email = "param@gmail.com";
@@ -38,7 +38,7 @@ public class Users {
         Log4Test.info("Finish generate user's email");
         return newEmail;
     }
-    private static String genereteNumber(){
+    private String genereteNumber(){
         String num ;
         Calendar cal = Calendar.getInstance();
         cal.getTime();

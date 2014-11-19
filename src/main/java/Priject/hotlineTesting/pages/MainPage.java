@@ -19,19 +19,17 @@ import java.util.List;
 public class MainPage extends Page {
     public static final String MAIN_PAGE = PropertyLoader.loadProperty("site.url") + '/';
 
-    public static final By PAGE_SEARCHBOX_ID = By.id("searchbox");
-    public static final By PAGE_DO_SEARCH_ID = By.id("doSearch");
+    public final By PAGE_SEARCHBOX_ID = By.id("searchbox");
+    public final By PAGE_DO_SEARCH_ID = By.id("doSearch");
 
-    public static final By PAGE_CITY_CLOSE = By.cssSelector("a.blue-button.success");
-    public static final By PAGE_CLOSE = By.className("close");
-    public static final By PAGE_BANER = By.className("lightbox-form");
+    public final By PAGE_CITY_CLOSE = By.cssSelector("a.blue-button.success");
+    public final By PAGE_CLOSE = By.className("close");
+    public final By PAGE_BANER = By.className("lightbox-form");
 
-    public static final By BT = By.xpath("//b[contains(text(),'Бытовая техника')]");
-    public static final By BT_HOLOD = By.xpath("//a[@href='/bt/holodilniki/']");
-    public static final By FILTER_FIRMA = By.xpath(".//*[@id='filters']/div[5]/p[5]/a");
-    public static final By REF_LG = By.xpath(".//*[@id='catalogue']/div[3]/div[2]/div/span");
-    public static final By PRICE_UP = By.xpath(".//a[contains(text(),'возрастанию цены')]");
+    public final By BT = By.xpath("//b[contains(text(),'Бытовая техника')]");
+    public final By BT_HOLOD = By.xpath("//a[@href='/bt/holodilniki/']");
 
+    private final By REGISTRATION_PAGE = By.className("reg");
 
     public MainPage(WebDriverWrapper driver){
         super(driver, MAIN_PAGE);
@@ -39,7 +37,7 @@ public class MainPage extends Page {
 
     // ---new isOpenPage
 
-    public static boolean isOpenPage(){
+    public boolean isOpenPage(){
         if (driver.getCurrentUrl().equals(MAIN_PAGE)) {
             Log4Test.info("MAIN : open -> " + MAIN_PAGE);
             return true;
@@ -48,13 +46,11 @@ public class MainPage extends Page {
         return false;
     }
 
-    //-- end --
+    //-- end isOpenPage--
 
+    // ---SEARCH PART---
 
-    // ---SERCH PARTH---
-
-
-    public static boolean doSearchProduct(String product){
+    public boolean doSearchProduct(String product){
         Log4Test.info("MAIN -> do search product: " + product);
         try {
             driver.findElement(PAGE_SEARCHBOX_ID).clear();
@@ -69,11 +65,11 @@ public class MainPage extends Page {
         return true;
     }
 
-    //--- END SERCH PARTH
+    //--- END SEARCH PART
 
-    //---CLOSE BUNNER---
+    //---CLOSE BANNER---
 
-    public static boolean cleanPage(){
+    public boolean cleanPage(){
         if(isNeedClean()) {
             try {
                 Log4Test.info("Start to close banners.");
@@ -88,13 +84,12 @@ public class MainPage extends Page {
             } catch (Exception e) {
                 Log4Test.error("Error in 'close banners' part.");
                 return false;
-
             }
         }
         Log4Test.info("Banners are close successful.");
         return true;
     }
-    public static boolean isNeedClean(){
+    public boolean isNeedClean(){
         try{
             driver.findElement(PAGE_BANER);
         }catch (Exception e){
@@ -103,20 +98,30 @@ public class MainPage extends Page {
         return true;
 
     }
-    //---END CLOSE BUNNER---
+    //---END CLOSE BANNER---
 
-    public static boolean goToRefregirators(){
-        Log4Test.info("Start goToRefregirator");
+    //--- REGISTRATION TEST PART---
+    public boolean goToRegistration(){
+        Log4Test.info("Start goToRegistration");
+        try{
+            driver.findElement(REGISTRATION_PAGE).click();
+        } catch (Exception e){
+            Log4Test.error("Error in goToRegistration");
+            return false;
+        }
+        Log4Test.info("Finish goToRegistration");
+        return true;
+    }
+    //--- END REGISTRATION TEST PART---
+
+    //---REFRIGERATOR TEST PART---
+    public boolean goToRefrigerators(){
+        Log4Test.info("Start goToRefrigerator");
         try {
             Actions builder = new Actions(driver.getOriginalDriver());
             builder.moveToElement(driver.findElement(BT)).perform();
-            sleep(5);
+            sleep(2);
             driver.findElement(BT_HOLOD).click();
-            driver.findElement(REF_LG).click();
-            driver.findElement(FILTER_FIRMA).click();
-            sleep(5);
-            driver.findElement(PRICE_UP).click();
-            sleep(5);
         } catch (Exception e){
             Log4Test.error("Error in goToRefregirators");
             return false;
@@ -124,32 +129,6 @@ public class MainPage extends Page {
         Log4Test.info("Finish goToRefregirators");
             return true;
     }
-    public static boolean isSorted(){
-        Log4Test.info("Start isSorted");
-        List<WebElement> prices;
-        try{
-            sleep(5);
-            WebElement element = driver.findElement(PRICE_CLASS);
-            prices = element.findElements(ORGN_CLASS);
-        // do not find element in custom logic
-        }catch (Exception e){
-            Log4Test.error("Error in isSorted");
-            return false;
-        }
-        int firstPrice = prices.size() > 0 ? getAvnPrice(prices.get(0)) : -1;
-        int secondPrices = prices.size() > 1 ? getAvnPrice(prices.get(1)) : -1;
-        if (firstPrice == -1 || secondPrices == -1){
-            return false;
-        }
-
-
-        //extract compare to other method
-        Log4Test.info("isSorted: first price = "+ firstPrice);
-        Log4Test.info("isSorted: second price = "+ secondPrices);
-        Log4Test.info("Finish isSorted");
-        return (firstPrice <= secondPrices);
-    }
-
-
+    //--- END REFRIGERATOR TEST PART---
 
 }
