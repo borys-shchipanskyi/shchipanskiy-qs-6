@@ -2,8 +2,7 @@
 <suite name="firstTestSuite" verbose="1" >
     <test name="SmokeTest">
         <classes>
-            <class name="Tests.hotlineTesting.FindProductTest"/>
-            <class name="Tests.hotlineTesting.ComparePricesTest"/>
+            <class name="Tests.hotlineTesting.ScreenshotTest"/>
         </classes>
     </test>
 </suite>

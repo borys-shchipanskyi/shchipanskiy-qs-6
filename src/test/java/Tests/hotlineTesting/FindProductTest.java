@@ -1,8 +1,8 @@
 package Tests.hotlineTesting;
 
-import Priject.hotlineTesting.pages.GoodsPage;
-import Priject.hotlineTesting.pages.MainPage;
-import Priject.hotlineTesting.utils.Log4Test;
+import Project.hotlineTesting.pages.GoodsPage;
+import Project.hotlineTesting.pages.MainPage;
+import Project.hotlineTesting.utils.Log4Test;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class FindProductTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testFindProduct( String product){
-        Log4Test.start( getClass().getName());
+        Log4Test.start(getClass().getName());
         mainPage = new MainPage(driver);
         mainPage.openPage();
         mainPage.cleanPage();

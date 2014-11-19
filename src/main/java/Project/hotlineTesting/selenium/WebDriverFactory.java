@@ -1,4 +1,4 @@
-package Priject.hotlineTesting.selenium;
+package Project.hotlineTesting.selenium;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;

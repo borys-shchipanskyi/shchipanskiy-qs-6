@@ -1,6 +1,6 @@
-package Priject.hotlineTesting.actors;
+package Project.hotlineTesting.actors;
 
-import Priject.hotlineTesting.utils.Log4Test;
+import Project.hotlineTesting.utils.Log4Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

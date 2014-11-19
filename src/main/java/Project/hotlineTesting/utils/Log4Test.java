@@ -1,4 +1,4 @@
-package Priject.hotlineTesting.utils;
+package Project.hotlineTesting.utils;
 
 import org.apache.log4j.Logger;
 import org.testng.Reporter;

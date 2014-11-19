@@ -1,9 +1,9 @@
 package Tests.hotlineTesting;
 
-import Priject.hotlineTesting.actors.Users;
-import Priject.hotlineTesting.pages.MainPage;
-import Priject.hotlineTesting.pages.RegistrationPage;
-import Priject.hotlineTesting.utils.Log4Test;
+import Project.hotlineTesting.actors.Users;
+import Project.hotlineTesting.pages.MainPage;
+import Project.hotlineTesting.pages.RegistrationPage;
+import Project.hotlineTesting.utils.Log4Test;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -33,7 +33,7 @@ public class RegisterTest extends FunctionTest{
 
     @Test(dataProvider = "testData")
     public void testRegistration(HashMap userInfoHashMap, boolean isGenerateEmail){
-        Log4Test.start( getClass().getName());
+        Log4Test.start(getClass().getName());
         mainPage = new MainPage(driver);
         user = new Users(userInfoHashMap, isGenerateEmail);
         mainPage.openPage();

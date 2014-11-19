@@ -1,11 +1,8 @@
-package Priject.hotlineTesting.pages;
+package Project.hotlineTesting.pages;
 
-import Priject.hotlineTesting.selenium.WebDriverWrapper;
-import Priject.hotlineTesting.utils.Log4Test;
-import Priject.hotlineTesting.utils.PropertyLoader;
+import Project.hotlineTesting.selenium.WebDriverWrapper;
+import Project.hotlineTesting.utils.Log4Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 /**
  * Created by boris on 04.11.14.

@@ -1,4 +1,4 @@
-package Priject.hotlineTesting.utils;
+package Project.hotlineTesting.utils;
 import org.testng.Assert;
 
 import java.io.IOException;

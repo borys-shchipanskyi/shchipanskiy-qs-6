@@ -1,10 +1,10 @@
 package Tests.hotlineTesting;
 
-import Priject.hotlineTesting.pages.MainPage;
-import Priject.hotlineTesting.selenium.WebDriverFactory;
-import Priject.hotlineTesting.selenium.WebDriverWrapper;
-import Priject.hotlineTesting.utils.Log4Test;
-import Priject.hotlineTesting.utils.PropertyLoader;
+import Project.hotlineTesting.pages.MainPage;
+import Project.hotlineTesting.selenium.WebDriverFactory;
+import Project.hotlineTesting.selenium.WebDriverWrapper;
+import Project.hotlineTesting.utils.Log4Test;
+import Project.hotlineTesting.utils.PropertyLoader;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 

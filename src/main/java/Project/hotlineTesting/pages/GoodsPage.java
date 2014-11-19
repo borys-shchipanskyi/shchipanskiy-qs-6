@@ -1,8 +1,8 @@
-package Priject.hotlineTesting.pages;
+package Project.hotlineTesting.pages;
 
-import Priject.hotlineTesting.selenium.WebDriverWrapper;
-import Priject.hotlineTesting.utils.CalculationOnPages;
-import Priject.hotlineTesting.utils.Log4Test;
+import Project.hotlineTesting.selenium.WebDriverWrapper;
+import Project.hotlineTesting.utils.CalculationOnPages;
+import Project.hotlineTesting.utils.Log4Test;
 import org.openqa.selenium.By;
 
 /**

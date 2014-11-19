@@ -1,6 +1,6 @@
-package Priject.hotlineTesting.utils;
+package Project.hotlineTesting.utils;
 
-import Priject.hotlineTesting.selenium.WebDriverWrapper;
+import Project.hotlineTesting.selenium.WebDriverWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
